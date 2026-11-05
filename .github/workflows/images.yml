@@ -3,6 +3,7 @@ name: Build images
 # Image'lar GitHub'da build qilinadi: production serverda xotira kam va boshqa saytlar ishlaydi.
 # Repo Settings -> Secrets and variables -> Actions -> Variables:
 #   TURNSTILE_SITE_KEY (majburiy), GA_ID, YM_ID (ixtiyoriy)
+# Bu qiymatlar frontend'ga build vaqtida kiradi: o'zgartirilgach Actions'da "Run workflow" bilan qayta build qiling.
 on:
   push:
     branches: [main]
