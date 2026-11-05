@@ -276,7 +276,7 @@ function WaveBackground({ count, reduced, scaleCount, light }: { count: number; 
     const mobile = size.width < 768;
     u.uSize!.value = (mobile ? 22 : 24) * Math.sqrt(70_000 / Math.max(count * scaleCount, 10_000));
     // Matn ustida o'qilishi uchun fon yumshoq
-    u.uOpacity!.value = damp(u.uOpacity!.value, mobile ? 0.3 : 0.5, 2.5, dt);
+    u.uOpacity!.value = damp(u.uOpacity!.value, mobile ? 0.22 : 0.5, 2.5, dt);
     const on = scene.mouse.active && !reduced;
     u.uPush!.value = damp(u.uPush!.value, on ? 1 : 0, 4, dt);
     if (on) mouse.current.set(scene.mouse.x * half.w, scene.mouse.y * half.h);
