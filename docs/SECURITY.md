@@ -27,7 +27,7 @@ Asos: TZ 9.4–9.5, OWASP Top 10 (2021/2025), OWASP ASVS L2 tanlangan bandlari.
 - TOTP sirlari bazada **AES-256-GCM** bilan shifrlangan (`DATA_ENC_KEY`); buzilgan shifr matni rad etiladi (test).
 - Sessiya tokeni 256-bit tasodifiy, bazada faqat **SHA-256 xeshi** saqlanadi.
 - IP manzil xom holda saqlanmaydi — HMAC-SHA256 (`IP_HASH_SECRET`).
-- TLS 1.2+/1.3, HSTS preload, OCSP stapling (nginx). SMTP: `requireTLS`, TLS 1.2+, sertifikat tekshiruvi.
+- TLS 1.2+/1.3, HSTS (faqat asosiy domen, subdomenlarda boshqa loyihalar bor), OCSP stapling (nginx). SMTP: `requireTLS`, TLS 1.2+, sertifikat tekshiruvi.
 
 ### A03 — Injection
 - SQL: faqat parametrlangan so'rovlar (`$1, $2…`), string konkatenatsiya yo'q. `'); DROP TABLE` matni oddiy ma'lumot sifatida saqlanishi tekshirildi.

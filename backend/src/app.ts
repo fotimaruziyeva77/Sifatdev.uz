@@ -32,7 +32,8 @@ export async function buildApp(): Promise<FastifyInstance> {
   await app.register(helmet, {
     contentSecurityPolicy: { directives: { defaultSrc: ["'none'"], frameAncestors: ["'none'"] } },
     crossOriginResourcePolicy: { policy: "same-origin" },
-    hsts: config.isProd ? { maxAge: 63072000, includeSubDomains: true, preload: true } : false,
+    // includeSubDomains yo'q: sifatdev.uz subdomenlarida boshqa loyihalar turadi
+    hsts: config.isProd ? { maxAge: 63072000, includeSubDomains: false, preload: false } : false,
     referrerPolicy: { policy: "strict-origin-when-cross-origin" },
   });
 
