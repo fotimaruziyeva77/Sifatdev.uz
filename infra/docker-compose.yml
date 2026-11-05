@@ -1,0 +1,73 @@
+# Production: O'zbekistondagi VPS (TZ 9.5). Tashqariga faqat nginx (80/443) ochiladi.
+# Ishga tushirish:  cd infra && cp .env.example .env && docker compose up -d --build
+name: sifatdev
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: sifatdev
+      POSTGRES_USER: sifatdev
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD kerak}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks: [internal]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sifatdev"]
+      interval: 10s
+      retries: 5
+
+  backend:
+    build: ../backend
+    restart: unless-stopped
+    env_file: ./backend.env
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      TRUST_PROXY: "true"
+      DATABASE_URL: postgres://sifatdev:${POSTGRES_PASSWORD}@postgres:5432/sifatdev
+      UPLOAD_DIR: /app/storage/uploads
+    volumes:
+      - uploads:/app/storage/uploads
+    depends_on:
+      postgres: { condition: service_healthy }
+    networks: [internal]
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+
+  frontend:
+    build:
+      context: ../frontend
+      args:
+        NEXT_PUBLIC_SITE_URL: ${SITE_URL:-https://sifatdev.uz}
+        NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${TURNSTILE_SITE_KEY:-}
+        NEXT_PUBLIC_GA_ID: ${GA_ID:-}
+        NEXT_PUBLIC_YM_ID: ${YM_ID:-}
+    restart: unless-stopped
+    environment:
+      BACKEND_URL: http://backend:4000
+    networks: [internal]
+    read_only: true
+    tmpfs: [/tmp, /app/.next/cache]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./nginx:/etc/nginx/conf.d:ro
+      - ./certs:/etc/nginx/certs:ro
+    depends_on: [frontend, backend]
+    networks: [internal]
+
+volumes:
+  pgdata:
+  uploads:
+
+networks:
+  internal:
