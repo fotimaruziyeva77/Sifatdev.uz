@@ -22,3 +22,6 @@ infra/certs/
 
 # Lokal muhit
 .claude/
+
+# Serverdagi maxfiy env fayllar (backend.env va h.k.)
+*.env

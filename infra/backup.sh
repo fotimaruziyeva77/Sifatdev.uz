@@ -9,7 +9,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 mkdir -p "$DEST"
 umask 077
 
-docker compose exec -T postgres pg_dump -U sifatdev -Fc sifatdev > "$DEST/db-$STAMP.dump"
+docker compose -f "${COMPOSE_FILE_NAME:-docker-compose.server.yml}" exec -T postgres pg_dump -U sifatdev -Fc sifatdev > "$DEST/db-$STAMP.dump"
 docker run --rm -v sifatdev_uploads:/data:ro -v "$DEST":/backup alpine \
   tar -czf "/backup/uploads-$STAMP.tar.gz" -C /data .
 

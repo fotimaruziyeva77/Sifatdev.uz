@@ -1,0 +1,70 @@
+# Umumiy production server uchun (100.42.190.208): boshqa loyihalar bilan birga ishlaydi.
+# - 80/443 portlarni serverdagi nginx egallagan, shuning uchun bu yerda nginx konteyneri yo'q.
+# - Portlar faqat 127.0.0.1 da ochiladi; tashqaridan kirish faqat host nginx orqali.
+# - Image'lar GitHub Actions'da build qilinadi (server xotirasi kam, build boshqa saytlarga xalaqit beradi).
+#
+# Ishga tushirish: cd infra && docker compose -f docker-compose.server.yml up -d
+name: sifatdev
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    mem_limit: 256m
+    environment:
+      POSTGRES_DB: sifatdev
+      POSTGRES_USER: sifatdev
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD kerak}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks: [internal]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sifatdev"]
+      interval: 10s
+      retries: 5
+
+  backend:
+    image: ghcr.io/fotimaruziyeva77/sifatdev-backend:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    mem_limit: 256m
+    env_file: ./backend.env
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: "4000"
+      TRUST_PROXY: "true"
+      DATABASE_URL: postgres://sifatdev:${POSTGRES_PASSWORD}@postgres:5432/sifatdev
+      UPLOAD_DIR: /app/storage/uploads
+    ports:
+      - "127.0.0.1:4010:4000"
+    volumes:
+      - uploads:/app/storage/uploads
+    depends_on:
+      postgres: { condition: service_healthy }
+    networks: [internal]
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+
+  frontend:
+    image: ghcr.io/fotimaruziyeva77/sifatdev-frontend:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    mem_limit: 384m
+    environment:
+      GOOGLE_SITE_VERIFICATION: ${GOOGLE_SITE_VERIFICATION:-}
+      YANDEX_VERIFICATION: ${YANDEX_VERIFICATION:-}
+    ports:
+      - "127.0.0.1:3010:3000"
+    networks: [internal]
+    read_only: true
+    tmpfs: [/tmp, /app/.next/cache]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+
+volumes:
+  pgdata:
+  uploads:
+
+networks:
+  internal:

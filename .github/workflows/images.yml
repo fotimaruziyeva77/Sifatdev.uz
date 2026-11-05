@@ -1,0 +1,40 @@
+name: Build images
+
+# Image'lar GitHub'da build qilinadi: production serverda xotira kam va boshqa saytlar ishlaydi.
+# Repo Settings -> Secrets and variables -> Actions -> Variables:
+#   TURNSTILE_SITE_KEY (majburiy), GA_ID, YM_ID (ixtiyoriy)
+on:
+  push:
+    branches: [main]
+    paths: ["frontend/**", "backend/**", ".github/workflows/images.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [backend, frontend]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: ${{ matrix.app }}
+          push: true
+          tags: |
+            ghcr.io/fotimaruziyeva77/sifatdev-${{ matrix.app }}:latest
+            ghcr.io/fotimaruziyeva77/sifatdev-${{ matrix.app }}:${{ github.sha }}
+          build-args: |
+            NEXT_PUBLIC_SITE_URL=https://sifatdev.uz
+            NEXT_PUBLIC_TURNSTILE_SITE_KEY=${{ vars.TURNSTILE_SITE_KEY }}
+            NEXT_PUBLIC_GA_ID=${{ vars.GA_ID }}
+            NEXT_PUBLIC_YM_ID=${{ vars.YM_ID }}
