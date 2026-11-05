@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.7
-FROM node:22-alpine AS build
+FROM node:26-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --no-fund --no-audit
@@ -7,12 +7,12 @@ COPY tsconfig.json ./
 COPY src ./src
 RUN npm run build && cp -r src/db/migrations dist/db/migrations && cp src/db/seed-content.json dist/db/seed-content.json
 
-FROM node:22-alpine AS deps
+FROM node:26-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev --no-fund --no-audit && npm cache clean --force
 
-FROM node:22-alpine
+FROM node:26-alpine
 ENV NODE_ENV=production
 WORKDIR /app
 # Root bo'lmagan foydalanuvchi; faqat storage yoziladi
