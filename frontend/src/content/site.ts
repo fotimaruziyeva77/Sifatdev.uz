@@ -12,12 +12,12 @@ export const SITE = {
   /** WhatsApp raqami tasdiqlanmagan — bo'sh bo'lsa ko'rsatilmaydi. */
   whatsapp: "",
   address: {
-    uz: "Toshkent sh., O'zbekiston", // TASDIQLANSIN
-    ru: "г. Ташкент, Узбекистан",
-    en: "Tashkent, Uzbekistan",
+    uz: "Navoiy viloyati, O'zbekiston", // Aniq ko'cha manzili TASDIQLANSIN
+    ru: "Навоийская область, Узбекистан",
+    en: "Navoi Region, Uzbekistan",
   },
   hours: { uz: "9:00–18:00 (UTC+5)", ru: "9:00–18:00 (UTC+5)", en: "9:00–18:00 (UTC+5)" },
-  geo: { lat: 41.3111, lng: 69.2797 }, // TASDIQLANSIN
+  geo: { lat: 40.1039, lng: 65.3792 }, // Navoiy shahri; ofis nuqtasi TASDIQLANSIN
   /** Faqat tasdiqlangan tarmoqlar. LinkedIn/Instagram havolalari berilganda qo'shing. */
   social: [{ name: "Telegram", href: "https://t.me/sifatdev_admin" }],
   meetingUrl: "", // Cal.com havolasi (ixtiyoriy, TZ 5.6)

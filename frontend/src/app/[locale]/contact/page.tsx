@@ -41,7 +41,7 @@ export default async function ContactPage({ params, searchParams }: Props) {
 
   return (
     <>
-      <section data-shape="ring" data-x="0.6" data-scale="0.8" data-push="1.6" className="pb-10 pt-[calc(var(--header-h)+48px)]">
+      <section data-shape="ring" data-x="0.6" data-scale="0.8" data-push="1.6" className="pb-10 pt-[calc(var(--header-h)+48px)] max-md:pt-[calc(var(--header-h)+24svh)]">
         <div className="container-x">
           <Breadcrumbs locale={locale} items={[{ name: ui.nav.contact, href: href(locale, "contact") }]} />
           <Words text={ui.contact.title} className="t-display max-w-3xl" />

@@ -5,7 +5,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --no-fund --no-audit
 COPY tsconfig.json ./
 COPY src ./src
-RUN npm run build && cp -r src/db/migrations dist/db/migrations
+RUN npm run build && cp -r src/db/migrations dist/db/migrations && cp src/db/seed-content.json dist/db/seed-content.json
 
 FROM node:22-alpine AS deps
 WORKDIR /app

@@ -27,7 +27,7 @@ export default async function OG({ params }: { params: Promise<{ locale: string 
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", padding: 80, width: 760 }}>
           <div style={{ fontSize: 30, letterSpacing: 6, color: "#ff5a5f" }}>SIFATDEV</div>
           <div style={{ fontSize: 60, fontWeight: 700, lineHeight: 1.1, marginTop: 24 }}>{TAG[locale] ?? TAG.en}</div>
-          <div style={{ fontSize: 26, color: "#b4b4be", marginTop: 28 }}>Web · Mobile · AI · GovTech — Tashkent</div>
+          <div style={{ fontSize: 26, color: "#b4b4be", marginTop: 28 }}>Web · Mobile · AI · GovTech — Navoi, Uzbekistan</div>
         </div>
       </div>
     ),

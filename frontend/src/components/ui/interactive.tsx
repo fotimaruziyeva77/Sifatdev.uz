@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { onMotionChange, readMotionPref, setMotionOff } from "@/lib/scene-store";
-import { BRAND, LOGO_BAR, LOGO_PATHS, LOGO_STROKE, LOGO_VIEWBOX } from "@/content/brand";
 
 /** Barcha .reveal elementlarini kuzatadi (har sahifa almashganda qayta). */
 export function RevealObserver() {
@@ -205,35 +204,30 @@ export function Cursor() {
   );
 }
 
-/** Birinchi tashrifda partikullardan logotip yig'iladi (≤ 1,5 s), keyin ko'rsatilmaydi. */
-export function FirstVisitLoader() {
-  const [show, setShow] = useState(false);
+/** Loaderni yopadi: 3D birinchi kadri chizilganda (kamida 1,1 s), 3D kechiksa 2,4 s dan keyin. */
+export function LoaderGate() {
   useEffect(() => {
-    let seen = "1";
-    try {
-      seen = localStorage.getItem("sifat-seen") ?? "";
-      localStorage.setItem("sifat-seen", "1");
-    } catch {
-      /* ignore */
-    }
-    if (seen || readMotionPref()) return;
-    setShow(true);
-    const t = setTimeout(() => setShow(false), 1400);
-    return () => clearTimeout(t);
+    const root = document.documentElement;
+    if (root.dataset.loaded) return;
+    const start = performance.now();
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      root.classList.add("loader-done");
+      try {
+        sessionStorage.setItem("sifat-loaded", "1");
+      } catch {
+        /* private mode */
+      }
+    };
+    const onReady = () => window.setTimeout(finish, Math.max(0, 1100 - (performance.now() - start)));
+    window.addEventListener("sifat:scene-ready", onReady, { once: true });
+    const cap = window.setTimeout(finish, 2400);
+    return () => {
+      window.removeEventListener("sifat:scene-ready", onReady);
+      window.clearTimeout(cap);
+    };
   }, []);
-  if (!show) return null;
-  return (
-    <div className="pointer-events-none fixed inset-0 z-[150] grid place-items-center bg-base" style={{ animation: "fade-in .3s reverse 1.1s forwards" }} aria-hidden="true">
-      {/* Qizil chiziq tushadi, so'ng SIFAT harflari chizilib chiqadi */}
-      <svg width="260" viewBox={`-2 -2 ${LOGO_VIEWBOX.w + 4} ${LOGO_VIEWBOX.h + 4}`}>
-        <rect width={LOGO_BAR.w} height={LOGO_BAR.h} fill={BRAND.red} style={{ transformOrigin: "top", animation: "loader-bar .45s cubic-bezier(.16,1,.3,1) both" }} />
-        <g fill="none" stroke="currentColor" strokeWidth={LOGO_STROKE} className="text-fg">
-          {LOGO_PATHS.map((d, i) => (
-            <path key={d} d={d} pathLength={1} strokeDasharray="1" strokeDashoffset="1" style={{ animation: `loader-draw .7s ${0.25 + i * 0.09}s cubic-bezier(.16,1,.3,1) forwards` }} />
-          ))}
-        </g>
-      </svg>
-      <style>{`@keyframes loader-draw{to{stroke-dashoffset:0}}@keyframes loader-bar{from{transform:scaleY(0)}}`}</style>
-    </div>
-  );
+  return null;
 }

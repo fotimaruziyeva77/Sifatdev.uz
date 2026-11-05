@@ -1,5 +1,5 @@
 import type { L } from "@/lib/i18n";
-import type { CaseId, ServiceId } from "./slugs";
+import type { ServiceId } from "./slugs";
 
 /**
  * Keyslar (TZ 10.3–10.4). ⚠ Davlat mijozlari nomi faqat yozma ruxsatdan keyin (clientHidden=false).
@@ -8,7 +8,7 @@ import type { CaseId, ServiceId } from "./slugs";
 export type Industry = "gov" | "construction" | "agro" | "hr" | "retail" | "legal" | "services";
 
 export type CaseStudy = {
-  id: CaseId;
+  id: string;
   order: number;
   title: L;
   client: L;
@@ -132,6 +132,22 @@ export const CASES: CaseStudy[] = [
       P("Hujjatlar va ochiq ma'lumotlar", "Документы и открытые данные", "Documents and open data"),
       P("O'zbek (lotin, kirill) va rus tilida", "На узбекском (латиница, кириллица) и русском", "Uzbek (Latin, Cyrillic) and Russian"),
     ],
+    results: [],
+    tech: [],
+  },
+  // Eco-Master: tashqaridan faqat "Telegram'da oching" sahifasi ko'rinadi. Tavsifni admin paneldan to'ldiring.
+  {
+    id: "eco-master", order: 4.6, clientHidden: false, client: P("Eco-Master", "Eco-Master", "Eco-Master"), industry: "services", services: ["automation", "mobile"], year: 2026, hue: 150, device: "laptop",
+    url: "https://eco-master.sifatdev.uz/",
+    shots: [
+      { src: "/images/cases/eco-desktop.webp", device: "laptop" },
+      { src: "/images/cases/eco-mobile.webp", device: "phone" },
+    ],
+    title: P("Eco-Master — Telegram ilovasi", "Eco-Master — приложение в Telegram", "Eco-Master — Telegram app"),
+    summary: P("Telegram ichida ishlaydigan ilova: alohida o'rnatish talab qilinmaydi.", "Приложение внутри Telegram: отдельная установка не нужна.", "An app that runs inside Telegram, with nothing extra to install."),
+    problem: P("", "", ""),
+    solution: P("Foydalanuvchi ilovani bot yoki havola orqali to'g'ridan-to'g'ri Telegram ichida ochadi.", "Пользователь открывает приложение прямо в Telegram через бота или ссылку.", "Users open the app directly in Telegram through the bot or a link."),
+    features: [P("Telegram ichida ishlaydi", "Работает внутри Telegram", "Runs inside Telegram"), P("Alohida o'rnatish kerak emas", "Не требует установки", "No separate install")],
     results: [],
     tech: [],
   },

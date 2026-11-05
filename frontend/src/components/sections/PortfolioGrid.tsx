@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import type { Locale } from "@/lib/i18n";
 import { UI } from "@/content/ui";
-import { INDUSTRY_LABELS, sortedCases, type Industry } from "@/content/cases";
+import { INDUSTRY_LABELS, type CaseStudy, type Industry } from "@/content/cases";
 import { SERVICES } from "@/content/services";
 import { CaseCard } from "./Cards";
 
@@ -12,9 +12,9 @@ const KEYS: (keyof Filters)[] = ["industry", "service", "tech", "year"];
 const PAGE = 9;
 
 /** Filtrlar (soha, xizmat, texnologiya, yil) birga ishlaydi va URL parametrlarida saqlanadi (TZ 8.3). */
-export default function PortfolioGrid({ locale, initial }: { locale: Locale; initial: Record<string, string | undefined> }) {
+export default function PortfolioGrid({ locale, initial, cases }: { locale: Locale; initial: Record<string, string | undefined>; cases: CaseStudy[] }) {
   const ui = UI[locale].work;
-  const all = sortedCases();
+  const all = cases;
   const techs = useMemo(() => Array.from(new Set(all.flatMap((c) => c.tech))).sort(), [all]);
   const years = useMemo(() => Array.from(new Set(all.map((c) => String(c.year)))).sort().reverse(), [all]);
 

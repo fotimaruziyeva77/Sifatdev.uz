@@ -8,6 +8,7 @@ import { config } from "./config.js";
 import { pool } from "./db/pool.js";
 import { publicRoutes } from "./routes/public.js";
 import { adminRoutes } from "./routes/admin.js";
+import { adminContentRoutes, publicContentRoutes } from "./routes/content.js";
 
 export async function buildApp(): Promise<FastifyInstance> {
   const app = Fastify({
@@ -88,6 +89,8 @@ export async function buildApp(): Promise<FastifyInstance> {
 
   await app.register(publicRoutes, { prefix: "/api/v1" });
   await app.register(adminRoutes, { prefix: "/api/v1/admin" });
+  await app.register(publicContentRoutes, { prefix: "/api/v1" });
+  await app.register(adminContentRoutes, { prefix: "/api/v1/admin" });
 
   return app;
 }

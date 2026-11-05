@@ -113,14 +113,14 @@ export default function Consent({ locale }: { locale: Locale }) {
   if (state === "hidden") return null;
   return (
     <div role="dialog" aria-live="polite" aria-label="Cookie" className="fixed inset-x-3 bottom-24 z-[60] md:bottom-6 md:left-6 md:right-auto md:max-w-md">
-      <div className="card p-5 shadow-2xl">
-        <p className="text-[15px] text-fg-2">
+      <div className="card flex items-center gap-3 !bg-base p-3 shadow-2xl md:block md:p-5">
+        <p className="min-w-0 flex-1 text-[12.5px] leading-snug text-fg-2 md:text-[15px] md:leading-normal">
           {state === "consent" ? ui.textEu : ui.text}{" "}
           <Link href={href(locale, "privacy")} className="text-accent-soft underline underline-offset-4">
             {UI[locale].footer.privacy}
           </Link>
         </p>
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="flex flex-none flex-wrap gap-2 md:mt-4">
           {state === "consent" ? (
             <>
               <button type="button" className="btn btn-primary btn-sm" onClick={() => save("all")}>

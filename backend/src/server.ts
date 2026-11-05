@@ -1,12 +1,14 @@
 import { config } from "./config.js";
 import { buildApp } from "./app.js";
 import { migrate } from "./db/migrate.js";
+import { ensureContentSeed } from "./lib/content.js";
 import { pool } from "./db/pool.js";
 import { processOutbox, startOutboxWorker } from "./lib/outbox.js";
 import { deleteStored } from "./lib/files.js";
 
 const app = await buildApp();
 await migrate();
+await ensureContentSeed();
 
 const worker = startOutboxWorker(app.log);
 

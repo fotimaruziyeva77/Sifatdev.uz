@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { scene, type ShapeName } from "@/lib/scene-store";
 
-type Anchor = { shape: ShapeName; x: number; y: number; scale: number; opacity: number; depth: number; push: number; c: number };
+type Anchor = { shape: ShapeName; x: number; y: number; my: number; mscale: number; scale: number; opacity: number; depth: number; push: number; c: number };
 
 const num = (v: string | undefined, d: number) => (v === undefined || v === "" ? d : Number(v));
 const smooth = (e0: number, e1: number, x: number) => {
@@ -34,6 +34,8 @@ export default function SceneDirector() {
           shape: d.shape as ShapeName,
           x: num(d.x, 0.45),
           y: num(d.y, 0),
+          my: num(d.my, 0.58),
+          mscale: num(d.mscale, num(d.scale, 1)),
           scale: num(d.scale, 1),
           opacity: num(d.opacity, 1),
           depth: num(d.depth, 0),
@@ -67,6 +69,8 @@ export default function SceneDirector() {
       const lerp = (u: number, v: number) => u + (v - u) * m;
       scene.x = lerp(A.x, B.x);
       scene.y = lerp(A.y, B.y);
+      scene.my = lerp(A.my, B.my);
+      scene.mscale = lerp(A.mscale, B.mscale);
       scene.scale = lerp(A.scale, B.scale);
       scene.coreOpacity = lerp(A.opacity, B.opacity);
       scene.depth = lerp(A.depth, B.depth);

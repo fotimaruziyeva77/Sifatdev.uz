@@ -7,7 +7,7 @@ import { pageMeta } from "@/lib/seo";
 import { UI } from "@/content/ui";
 import { SITE } from "@/content/site";
 import { serviceById } from "@/content/services";
-import { CASES } from "@/content/cases";
+import { getContent } from "@/lib/content-server";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { CaseCard } from "@/components/sections/Cards";
 import { JsonLd, SERVICE_ICONS, Words } from "@/components/ui/basics";
@@ -37,7 +37,8 @@ export default async function ServicePage({ params }: Props) {
   const { locale, s } = r;
   const ui = UI[locale];
   const Icon = SERVICE_ICONS[s.id];
-  const related = CASES.filter((c) => c.services.includes(s.id)).slice(0, 3);
+  const { cases } = await getContent();
+  const related = cases.filter((c) => c.services.includes(s.id)).slice(0, 3);
 
   return (
     <>
@@ -61,7 +62,7 @@ export default async function ServicePage({ params }: Props) {
       />
 
       {/* Hero: xizmatning 3D belgisi kursorga qarab buriladi */}
-      <section data-shape={s.shape} data-x="0.55" data-scale="0.85" className="flex min-h-[80svh] items-center pb-12 pt-[calc(var(--header-h)+48px)]">
+      <section data-shape={s.shape} data-x="0.55" data-scale="0.85" className="flex min-h-[80svh] items-center pb-12 pt-[calc(var(--header-h)+48px)] max-md:pt-[calc(var(--header-h)+24svh)]">
         <div className="container-x">
           <Breadcrumbs locale={locale} items={[{ name: ui.services.title, href: href(locale, "services") }, { name: s.title[locale], href: href(locale, "services", s.id) }]} />
           <span className="grid h-14 w-14 place-items-center rounded-2xl border border-line bg-elevated text-accent-soft">

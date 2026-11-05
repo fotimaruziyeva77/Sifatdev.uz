@@ -7,7 +7,8 @@ import { href, idBySlug } from "@/lib/routes";
 import { pageMeta } from "@/lib/seo";
 import { UI } from "@/content/ui";
 import { SITE } from "@/content/site";
-import { INDUSTRY_LABELS, caseById, sortedCases } from "@/content/cases";
+import { INDUSTRY_LABELS } from "@/content/cases";
+import { getContent } from "@/lib/content-server";
 import { serviceById } from "@/content/services";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import DeviceMock from "@/components/sections/DeviceMock";
@@ -18,34 +19,34 @@ import { Magnetic, Tilt } from "@/components/ui/interactive";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
-function load(locale: string, slug: string) {
+async function load(locale: string, slug: string) {
   if (!isLocale(locale)) return null;
   const id = idBySlug("work", locale, decodeURIComponent(slug));
-  const c = id ? caseById(id) : undefined;
-  return c ? { locale: locale as Locale, c } : null;
+  const { cases } = await getContent();
+  const c = id ? cases.find((x) => x.id === id) : undefined;
+  return c ? { locale: locale as Locale, c, all: cases } : null;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const r = load(locale, slug);
+  const r = await load(locale, slug);
   if (!r) return {};
   return pageMeta({ locale: r.locale, key: "work", itemId: r.c.id, title: `${r.c.title[r.locale]} — SIFATDEV`, description: r.c.summary[r.locale] + " " + r.c.problem[r.locale] });
 }
 
 export default async function CasePage({ params }: Props) {
   const { locale: l, slug } = await params;
-  const r = load(l, slug);
+  const r = await load(l, slug);
   if (!r) notFound();
-  const { locale, c } = r;
+  const { locale, c, all } = r;
   const ui = UI[locale];
-  const all = sortedCases();
   const next = all[(all.findIndex((x) => x.id === c.id) + 1) % all.length]!;
 
   const facts: [string, string][] = [
     [ui.work.client, c.clientHidden ? `${c.client[locale]} · ${ui.work.hidden}` : c.client[locale]],
     [ui.work.industry, INDUSTRY_LABELS[c.industry][locale]],
-    ...(c.duration ? ([[ui.work.duration, c.duration[locale]]] as [string, string][]) : []),
-    ...(c.team ? ([[ui.work.team, c.team[locale]]] as [string, string][]) : []),
+    ...(c.duration?.[locale] ? ([[ui.work.duration, c.duration[locale]]] as [string, string][]) : []),
+    ...(c.team?.[locale] ? ([[ui.work.team, c.team[locale]]] as [string, string][]) : []),
     [ui.work.servicesL, c.services.map((s) => serviceById(s)?.title[locale]).filter(Boolean).join(", ")],
     [ui.work.year, String(c.year)],
   ];
@@ -72,7 +73,7 @@ export default async function CasePage({ params }: Props) {
           <p className="t-label mb-5">{INDUSTRY_LABELS[c.industry][locale]} · {c.year}</p>
           <Words text={c.title[locale]} className="t-display max-w-4xl" />
           <p className="t-lead hero-in mt-6 max-w-2xl">{c.summary[locale]}</p>
-          {c.url && (
+          {c.url && /^https?:\/\//.test(c.url) && (
             <a href={c.url} target="_blank" rel="noopener noreferrer" className="btn btn-secondary hero-in mt-8">
               {ui.work.visit} <ExternalLink size={16} aria-hidden="true" />
             </a>
@@ -96,10 +97,12 @@ export default async function CasePage({ params }: Props) {
             ))}
           </dl>
           <div className="grid gap-14">
+            {c.problem[locale] && (
             <div>
               <h2 className="t-h3 reveal mb-4">{ui.work.problem}</h2>
               <p className="reveal text-fg-2">{c.problem[locale]}</p>
             </div>
+            )}
             <div>
               <h2 className="t-h3 reveal mb-4">{ui.work.solution}</h2>
               <p className="reveal text-fg-2">{c.solution[locale]}</p>
@@ -130,7 +133,7 @@ export default async function CasePage({ params }: Props) {
             )}
             <div>
               <h2 className="t-h3 reveal mb-6">{ui.work.gallery}</h2>
-              {c.shots ? (
+              {c.shots?.length ? (
                 <CaseGallery shots={c.shots} title={c.title[locale]} labels={{ zoom: ui.work.zoom, prev: ui.work.prev, next: ui.work.next, close: ui.close }} />
               ) : (
               <div className="grid gap-5 sm:grid-cols-2">

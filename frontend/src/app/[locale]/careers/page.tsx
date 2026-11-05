@@ -6,7 +6,8 @@ import { isLocale } from "@/lib/i18n";
 import { href } from "@/lib/routes";
 import { pageMeta } from "@/lib/seo";
 import { UI } from "@/content/ui";
-import { CULTURE, HIRING, VACANCIES } from "@/content/company";
+import { CULTURE, HIRING } from "@/content/company";
+import { getContent } from "@/lib/content-server";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { Words } from "@/components/ui/basics";
 import ApplicationForm from "@/components/forms/ApplicationForm";
@@ -26,10 +27,11 @@ export default async function CareersPage({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const ui = UI[locale];
-  const open = VACANCIES.filter((v) => v.open);
+  const { vacancies } = await getContent();
+  const open = vacancies.filter((v) => v.open);
   return (
     <>
-      <section data-shape="neural" data-x="0.55" data-scale="0.8" className="flex min-h-[70svh] items-center pb-12 pt-[calc(var(--header-h)+48px)]">
+      <section data-shape="neural" data-x="0.55" data-scale="0.8" className="flex min-h-[70svh] items-center pb-12 pt-[calc(var(--header-h)+48px)] max-md:pt-[calc(var(--header-h)+24svh)]">
         <div className="container-x">
           <Breadcrumbs locale={locale} items={[{ name: ui.careers.title, href: href(locale, "careers") }]} />
           <Words text={ui.careers.title} className="t-display" />

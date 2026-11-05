@@ -48,6 +48,7 @@ function Core({ count, reduced, scaleCount, light }: { count: number; reduced: b
   const { camera, size } = useThree();
   const pts = useRef<THREE.Points>(null);
   const pair = useRef({ from: scene.from, to: scene.to, m: scene.morph });
+  const readySent = useRef(false);
 
   const geometry = useMemo(() => {
     const g = new THREE.BufferGeometry();
@@ -85,6 +86,7 @@ function Core({ count, reduced, scaleCount, light }: { count: number; reduced: b
           uSpin: { value: FLAT_SHAPES.has(scene.from) ? 0.25 : 1 },
           uWave: { value: 0 },
           uWarp: { value: 0 },
+          uScrollSpin: { value: 0 },
           uWhite: { value: WHITE.clone() },
           uSilver: { value: SILVER.clone() },
           uRed: { value: RED.clone() },
@@ -108,6 +110,11 @@ function Core({ count, reduced, scaleCount, light }: { count: number; reduced: b
   useFrame((state, dt) => {
     const u = material.uniforms;
     const p = pair.current;
+    if (!readySent.current) {
+      // Birinchi kadr chizildi: loader yopilishi mumkin
+      readySent.current = true;
+      window.dispatchEvent(new Event("sifat:scene-ready"));
+    }
     // Shakl juftligi almashganda morfni uzluksiz saqlash
     if (scene.from !== p.from || scene.to !== p.to) {
       if (scene.from === p.to) p.m -= 1;
@@ -134,6 +141,8 @@ function Core({ count, reduced, scaleCount, light }: { count: number; reduced: b
     const mm = u.uMorph!.value as number;
     const flat = (FLAT_SHAPES.has(scene.from) ? 1 - mm : 0) + (FLAT_SHAPES.has(scene.to) ? mm : 0);
     u.uSpin!.value = damp(u.uSpin!.value, 1 - flat * 0.8, 4, dt);
+    // Telefonda shakl scroll bilan aylanadi (matnli shakllar bundan mustasno)
+    u.uScrollSpin!.value = size.width < 768 && !reduced ? scene.scrollY * 0.0014 * (1 - Math.min(flat, 1)) : 0;
     const wave = (scene.from === "wave" ? 1 - mm : 0) + (scene.to === "wave" ? mm : 0);
     u.uWave!.value = damp(u.uWave!.value, wave, 4, dt);
     // O'tish: tez tarqaladi, sekinroq yig'iladi
@@ -143,7 +152,7 @@ function Core({ count, reduced, scaleCount, light }: { count: number; reduced: b
     const half = viewHalf(camera as THREE.PerspectiveCamera);
     const mobile = size.width < 768;
     const tx = mobile ? 0 : scene.x * half.w;
-    const ty = (mobile ? scene.y + 0.15 : scene.y) * half.h;
+    const ty = (mobile ? scene.my : scene.y) * half.h;
     if (pts.current) {
       pts.current.position.x = damp(pts.current.position.x, tx, k, dt);
       pts.current.position.y = damp(pts.current.position.y, ty, k, dt);
@@ -151,7 +160,7 @@ function Core({ count, reduced, scaleCount, light }: { count: number; reduced: b
     // Tor ekranda yadro matnni yopmasligi uchun kenglikka qarab ham kichrayadi.
     // Telefonda shakl ekran kengligining ~70% ini egallaydi (avval juda kichrayib ketardi)
     const scaleTarget = mobile
-      ? scene.scale * THREE.MathUtils.clamp(half.w / 1.45, 0.4, 1)
+      ? scene.mscale * THREE.MathUtils.clamp(half.w / 1.45, 0.4, 1)
       : scene.scale * 0.9 * Math.min(1, half.h / 1.9, half.w / 3.6);
     u.uScale!.value = damp(u.uScale!.value, scaleTarget, k, dt);
     if (pts.current) {
@@ -162,12 +171,19 @@ function Core({ count, reduced, scaleCount, light }: { count: number; reduced: b
     const spread = scene.to === "wave" || scene.from === "wave" ? 0 : 1;
     scene.core.r = 1.65 * (u.uScale!.value as number);
     scene.core.o = damp(scene.core.o, scene.coreOpacity > 0.3 ? spread : 0, 3, dt);
-    u.uOpacity!.value = damp(u.uOpacity!.value, scene.coreOpacity * (mobile ? 0.9 : 1), 3, dt);
+    u.uOpacity!.value = damp(u.uOpacity!.value, scene.coreOpacity, 3, dt);
     u.uSize!.value = (mobile ? 13 : 16) * Math.sqrt(50_000 / Math.max(count * scaleCount, 10_000));
 
     const mouseOn = scene.mouse.active && !reduced;
-    u.uPush!.value = damp(u.uPush!.value, mouseOn ? scene.push : 0, 5, dt);
+    // Telefonda barmoq tegmagan paytda ham zarrachalar o'zi girdob hosil qiladi
+    const auto = mobile && !mouseOn && !reduced;
+    u.uPush!.value = damp(u.uPush!.value, mouseOn ? scene.push : auto ? 0.16 * (1 - 0.7 * Math.min(flat, 1)) : 0, 5, dt);
     if (mouseOn) (u.uMouse!.value as THREE.Vector3).set(scene.mouse.x * half.w, scene.mouse.y * half.h, 0);
+    else if (auto && pts.current) {
+      const t = u.uTime!.value as number;
+      const r = scene.core.r;
+      (u.uMouse!.value as THREE.Vector3).set(pts.current.position.x + Math.cos(t * 0.7) * r * 0.75, pts.current.position.y + Math.sin(t * 1.1) * r * 0.55, 0);
+    }
 
     const cam = camera as THREE.PerspectiveCamera;
     cam.position.z = damp(cam.position.z, CAM_Z - scene.depth * 1.6 - (u.uWarp!.value as number) * 2.2, 4, dt);
@@ -260,7 +276,7 @@ function WaveBackground({ count, reduced, scaleCount, light }: { count: number; 
     const mobile = size.width < 768;
     u.uSize!.value = (mobile ? 22 : 24) * Math.sqrt(70_000 / Math.max(count * scaleCount, 10_000));
     // Matn ustida o'qilishi uchun fon yumshoq
-    u.uOpacity!.value = damp(u.uOpacity!.value, mobile ? 0.32 : 0.5, 2.5, dt);
+    u.uOpacity!.value = damp(u.uOpacity!.value, mobile ? 0.3 : 0.5, 2.5, dt);
     const on = scene.mouse.active && !reduced;
     u.uPush!.value = damp(u.uPush!.value, on ? 1 : 0, 4, dt);
     if (on) mouse.current.set(scene.mouse.x * half.w, scene.mouse.y * half.h);
@@ -338,11 +354,28 @@ export default function Scene({ quality, reduced, onFail }: { quality: Quality; 
     const onLeave = () => {
       scene.mouse.active = false;
     };
+    // Telefon: barmoq bilan zarrachalarni surish
+    const onTouch = (e: TouchEvent) => {
+      const t = e.touches[0];
+      if (!t) return;
+      scene.mouse.x = (t.clientX / window.innerWidth) * 2 - 1;
+      scene.mouse.y = -((t.clientY / window.innerHeight) * 2 - 1);
+      scene.mouse.active = true;
+      scene.mouse.lastMove = performance.now();
+    };
     window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("touchstart", onTouch, { passive: true });
+    window.addEventListener("touchmove", onTouch, { passive: true });
+    window.addEventListener("touchend", onLeave, { passive: true });
+    window.addEventListener("touchcancel", onLeave, { passive: true });
     document.documentElement.addEventListener("pointerleave", onLeave);
     return () => {
       document.removeEventListener("visibilitychange", onVis);
       window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("touchstart", onTouch);
+      window.removeEventListener("touchmove", onTouch);
+      window.removeEventListener("touchend", onLeave);
+      window.removeEventListener("touchcancel", onLeave);
       document.documentElement.removeEventListener("pointerleave", onLeave);
     };
   }, []);

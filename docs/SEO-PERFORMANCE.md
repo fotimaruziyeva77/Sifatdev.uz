@@ -25,7 +25,7 @@ Mobil LCP ≤ 2.5 s ga yetish uchun production'da: nginx gzip/brotli, CDN (stati
 ## SEO — saytda qilingan
 
 - Har sahifada: kalit so'zli `title` (≤ 60), `description` (≤ 160), `canonical`, `hreflang` (uz-Latn, ru, en, x-default), Open Graph rasm.
-  - Bosh sahifa: "Sayt, mobil ilova va AI yaratish Toshkentda | SIFATDEV" / "Разработка сайтов, приложений и AI в Ташкенте" / "Web, Mobile App & AI Development in Uzbekistan".
+  - Bosh sahifa: "Sayt, mobil ilova va AI yaratish — Navoiy | SIFATDEV" / "Разработка сайтов, приложений и AI — Навои" / "Web, Mobile App & AI Development in Uzbekistan".
 - Schema.org: `Organization` + `ProfessionalService` (telefon, hudud, tillar), `WebSite`, `Service`, `FAQPage`, `CreativeWork`, `JobPosting`, `BreadcrumbList`.
 - `sitemap.xml` (69 URL, til alternativlari bilan), `robots.txt`, `manifest.webmanifest`, `/.well-known/security.txt`.
 - Ichki bog'lanish: har sahifa oxirida "Keyingi qadam" bloki, breadcrumb, xizmat ↔ keys havolalari.
@@ -38,8 +38,8 @@ Hech kim (jumladan Google'ning o'zi) 1-o'rinni kafolatlay olmaydi: reyting raqob
 
 1. **Domen va HTTPS** — `sifatdev.uz` da ishga tushirish (HTTPS majburiy).
 2. **Google Search Console** — saytni qo'shish, `sitemap.xml` ni yuborish; **Yandex Webmaster** ham.
-3. **Google Business Profile** (Google Xaritalar) — kompaniya kartochkasi: manzil, telefon +998 99 750 17 17, ish vaqti, rasmlar. "IT kompaniya Toshkent" kabi mahalliy qidiruvlarda eng katta ta'sir shu.
-4. **Kontent (eng muhim)** — blog maqolalari (oyiga 2–4 ta): "Toshkentda sayt yaratish narxi", "Telegram bot yaratish", "AI chatbot biznes uchun" va h.k. — 3 tilda. Blog tuzilmasi tayyor.
+3. **Google Business Profile** (Google Xaritalar) — kompaniya kartochkasi: manzil, telefon +998 99 750 17 17, ish vaqti, rasmlar. "IT kompaniya Navoiy" kabi mahalliy qidiruvlarda eng katta ta'sir shu.
+4. **Kontent (eng muhim)** — blog maqolalari (oyiga 2–4 ta): "Navoiyda sayt yaratish narxi", "Telegram bot yaratish", "AI chatbot biznes uchun" va h.k. — 3 tilda. Blog tuzilmasi tayyor.
 5. **Haqiqiy keyslar** — raqamli natijalar, skrinshotlar, mijoz fikrlari (ruxsat bilan).
 6. **Tashqi havolalar** — kataloglar (2GIS, Yandex Maps, Clutch, GoodFirms), hamkorlar saytlari, IT yangiliklari, Telegram kanallar.
 7. **Sharhlar** — Google Business'da mijozlardan baho so'rash.

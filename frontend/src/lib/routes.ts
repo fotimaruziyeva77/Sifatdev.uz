@@ -24,8 +24,8 @@ const DETAIL_SLUGS: Partial<Record<PageKey, Record<string, L>>> = {
 export function href(l: Locale, key: PageKey, itemId?: string, query?: Record<string, string>): string {
   let p = key === "home" ? `/${l}` : `/${l}/${SEGMENTS[key][l]}`;
   if (itemId) {
-    const slug = DETAIL_SLUGS[key]?.[itemId]?.[l];
-    if (slug) p += `/${slug}`;
+    // Admin paneldan qo'shilgan yozuvda alohida slug yo'q: id ishlatiladi
+    p += `/${DETAIL_SLUGS[key]?.[itemId]?.[l] ?? itemId}`;
   }
   if (query && Object.keys(query).length) p += `?${new URLSearchParams(query).toString()}`;
   return p;
@@ -41,7 +41,7 @@ export function idBySlug(key: PageKey, l: Locale, slug: string): string | null {
   const table = DETAIL_SLUGS[key];
   if (!table) return null;
   for (const [id, v] of Object.entries(table)) if (v[l] === slug) return id;
-  return null;
+  return key === "work" || key === "careers" ? slug : null;
 }
 
 /** Joriy sahifaning boshqa tildagi manzili (til almashtirgich bosh sahifaga qaytarmaydi — TZ 8.1). */

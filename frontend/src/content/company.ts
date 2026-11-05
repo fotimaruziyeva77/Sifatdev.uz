@@ -1,5 +1,4 @@
 import type { L } from "@/lib/i18n";
-import type { VacancyId } from "./slugs";
 
 const P = (uz: string, ru: string, en: string): L => ({ uz, ru, en });
 
@@ -59,7 +58,7 @@ export const HIRING: L[] = [
 ];
 
 export type Vacancy = {
-  id: VacancyId;
+  id: string;
   open: boolean;
   direction: "frontend" | "backend" | "mobile" | "design" | "qa" | "ai";
   level: L;
@@ -90,7 +89,7 @@ export const VACANCIES: Vacancy[] = [
     intro: P("Yuqori yuklamali tizimlar va AI xizmatlari backend'ini quramiz.", "Строим backend нагруженных систем и AI-сервисов.", "We build backends for high-load systems and AI services."),
     tasks: [P("Django/FastAPI'da API va xizmatlar", "API и сервисы на Django/FastAPI", "APIs and services with Django/FastAPI"), P("PostgreSQL so'rovlarini optimallashtirish", "Оптимизация запросов PostgreSQL", "PostgreSQL query optimization"), P("Integratsiyalar va navbatlar", "Интеграции и очереди", "Integrations and queues")],
     requirements: [P("Python bo'yicha 3+ yil", "3+ года Python", "3+ years of Python"), P("PostgreSQL, Docker", "PostgreSQL, Docker", "PostgreSQL, Docker"), P("Xavfsiz kod yozish tamoyillari", "Принципы безопасной разработки", "Secure coding practices")],
-    conditions: [P("Raqobatbardosh maosh", "Конкурентная зарплата", "Competitive salary"), P("Toshkentdagi ofis", "Офис в Ташкенте", "Office in Tashkent"), P("Tibbiy sug'urta", "Медицинская страховка", "Health insurance")],
+    conditions: [P("Raqobatbardosh maosh", "Конкурентная зарплата", "Competitive salary"), P("Navoiy viloyatidagi ofis", "Офис в Навоийской области", "Office in Navoi Region"), P("Tibbiy sug'urta", "Медицинская страховка", "Health insurance")],
   },
 ];
 

@@ -13,6 +13,9 @@ export type SceneState = {
   /** Yadro joylashuvi: ekran yarim kengligiga nisbatan (-1..1) */
   x: number;
   y: number;
+  /** Telefondagi joylashuv va masshtab: shakl matn ustida, ochiq joyda turadi */
+  my: number;
+  mscale: number;
   scale: number;
   coreOpacity: number;
   depth: number; // kamera chuqurligi (0..1)
@@ -33,6 +36,8 @@ export const scene: SceneState = {
   morph: 0,
   x: 0.45,
   y: 0,
+  my: 0.62,
+  mscale: 0.72,
   scale: 1,
   coreOpacity: 1,
   depth: 0,
@@ -82,4 +87,4 @@ export function onMotionChange(l: Listener) {
 }
 
 /** <head> ichida bo'yashdan oldin ishlaydigan skript (miltillashsiz). */
-export const MOTION_BOOTSTRAP = `try{var s=localStorage.getItem("${MOTION_KEY}");var r=s==="off"||(s!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches);document.documentElement.dataset.motion=r?"reduced":"full"}catch(e){}`;
+export const MOTION_BOOTSTRAP = `try{var s=localStorage.getItem("${MOTION_KEY}");var r=s==="off"||(s!=="on"&&matchMedia("(prefers-reduced-motion: reduce)").matches);document.documentElement.dataset.motion=r?"reduced":"full";if(r||sessionStorage.getItem("sifat-loaded"))document.documentElement.dataset.loaded="1"}catch(e){}`;

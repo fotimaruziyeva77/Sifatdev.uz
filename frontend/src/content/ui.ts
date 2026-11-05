@@ -9,7 +9,7 @@ const uz = {
   language: "Til",
   breadcrumbHome: "Bosh sahifa",
   home: {
-    eyebrow: "IT kompaniya · Toshkent",
+    eyebrow: "IT kompaniya · Navoiy viloyati",
     h1: "Biznesingiz uchun sayt, mobil ilova va AI yechimlar yaratamiz",
     lead: "Davlat tashkilotlari va biznes uchun veb-platformalar, mobil ilovalar va AI agentlar yaratamiz. Tahlildan qo'llab-quvvatlashgacha — bitta jamoa.",
     services: "Xizmatlar",
@@ -77,7 +77,7 @@ const ru: Dict = {
   language: "Язык",
   breadcrumbHome: "Главная",
   home: {
-    eyebrow: "IT-компания · Ташкент",
+    eyebrow: "IT-компания · Навоийская область",
     h1: "Создаём сайты, мобильные приложения и AI-решения для вашего бизнеса",
     lead: "Создаём веб-платформы, мобильные приложения и AI-агентов для государственных организаций и бизнеса. От анализа до поддержки — одна команда.",
     services: "Услуги",
@@ -143,7 +143,7 @@ const en: Dict = {
   language: "Language",
   breadcrumbHome: "Home",
   home: {
-    eyebrow: "Software company · Tashkent",
+    eyebrow: "Software company · Navoi, Uzbekistan",
     h1: "We build websites, mobile apps and AI solutions for your business",
     lead: "We build web platforms, mobile apps and AI agents for government and business. From discovery to long-term support — one accountable team.",
     services: "Services",

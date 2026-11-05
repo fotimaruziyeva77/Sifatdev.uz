@@ -7,7 +7,7 @@ import { href, idBySlug } from "@/lib/routes";
 import { pageMeta } from "@/lib/seo";
 import { UI } from "@/content/ui";
 import { SITE } from "@/content/site";
-import { VACANCIES, vacancyById } from "@/content/company";
+import { getContent } from "@/lib/content-server";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { JsonLd, Words } from "@/components/ui/basics";
 import NextSteps from "@/components/sections/NextSteps";
@@ -15,27 +15,28 @@ import ApplicationForm from "@/components/forms/ApplicationForm";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
-function load(locale: string, slug: string) {
+async function load(locale: string, slug: string) {
   if (!isLocale(locale)) return null;
   const id = idBySlug("careers", locale, decodeURIComponent(slug));
-  const v = id ? vacancyById(id) : undefined;
-  return v ? { locale: locale as Locale, v } : null;
+  const { vacancies } = await getContent();
+  const v = id ? vacancies.find((x) => x.id === id) : undefined;
+  return v ? { locale: locale as Locale, v, vacancies } : null;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const r = load(locale, slug);
+  const r = await load(locale, slug);
   if (!r) return {};
   return pageMeta({ locale: r.locale, key: "careers", itemId: r.v.id, title: `${r.v.title[r.locale]} — SIFATDEV`, description: r.v.intro[r.locale] });
 }
 
 export default async function VacancyPage({ params }: Props) {
   const { locale: l, slug } = await params;
-  const r = load(l, slug);
+  const r = await load(l, slug);
   if (!r) notFound();
-  const { locale, v } = r;
+  const { locale, v, vacancies } = r;
   const ui = UI[locale];
-  const similar = VACANCIES.filter((x) => x.id !== v.id && x.open).slice(0, 3);
+  const similar = vacancies.filter((x) => x.id !== v.id && x.open).slice(0, 3);
   const block = (title: string, items: typeof v.tasks) => (
     <div>
       <h2 className="t-h3 reveal mb-5">{title}</h2>
@@ -61,12 +62,12 @@ export default async function VacancyPage({ params }: Props) {
             datePosted: v.posted,
             employmentType: "FULL_TIME",
             hiringOrganization: { "@type": "Organization", name: "SIFATDEV", sameAs: SITE.url },
-            jobLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: "Tashkent", addressCountry: "UZ" } },
+            jobLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressRegion: "Navoi", addressCountry: "UZ" } },
             ...(v.type === "remote" ? { jobLocationType: "TELECOMMUTE", applicantLocationRequirements: { "@type": "Country", name: "Uzbekistan" } } : {}),
           }}
         />
       )}
-      <section data-shape="neural" data-x="0.6" data-scale="0.7" className="pb-10 pt-[calc(var(--header-h)+48px)]">
+      <section data-shape="neural" data-x="0.6" data-scale="0.7" className="pb-10 pt-[calc(var(--header-h)+48px)] max-md:pt-[calc(var(--header-h)+24svh)]">
         <div className="container-x">
           <Breadcrumbs locale={locale} items={[{ name: ui.careers.title, href: href(locale, "careers") }, { name: v.title[locale], href: href(locale, "careers", v.id) }]} />
           <p className="t-label mb-5">{v.level[locale]} · {ui.careers[v.type]} · {formatDate(v.posted, locale)}</p>

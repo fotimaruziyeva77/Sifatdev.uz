@@ -6,6 +6,7 @@ import { pageMeta } from "@/lib/seo";
 import { UI } from "@/content/ui";
 import { SITE } from "@/content/site";
 import { ABOUT } from "@/content/company";
+import { getContent } from "@/lib/content-server";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { Words } from "@/components/ui/basics";
 import { Counter, Tilt } from "@/components/ui/interactive";
@@ -24,9 +25,10 @@ export default async function AboutPage({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const ui = UI[locale];
+  const { stats } = await getContent();
   return (
     <>
-      <section data-shape="logo" data-x="0.5" data-scale="0.6" className="flex min-h-[80svh] items-center pb-12 pt-[calc(var(--header-h)+48px)]">
+      <section data-shape="logo" data-x="0.5" data-scale="0.6" className="flex min-h-[80svh] items-center pb-12 pt-[calc(var(--header-h)+48px)] max-md:pt-[calc(var(--header-h)+24svh)]">
         <div className="container-x">
           <Breadcrumbs locale={locale} items={[{ name: ui.about.title, href: href(locale, "about") }]} />
           <p className="t-label mb-5">{ui.about.mission}</p>
@@ -46,7 +48,7 @@ export default async function AboutPage({ params }: Props) {
             ))}
           </div>
           <dl className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4">
-            {SITE.stats.map((s, i) => (
+            {stats.map((s, i) => (
               <div key={i} className="reveal">
                 <dt className="sr-only">{s.label[locale]}</dt>
                 <dd>

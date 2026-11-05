@@ -22,7 +22,7 @@ export default async function PrivacyPage({ params }: Props) {
   const p = PRIVACY[locale];
   return (
     <>
-    <section data-shape="shield" data-x="0.6" data-scale="0.6" data-opacity="0.5" className="pb-24 pt-[calc(var(--header-h)+48px)]">
+    <section data-shape="shield" data-x="0.6" data-scale="0.6" data-opacity="0.5" className="pb-24 pt-[calc(var(--header-h)+48px)] max-md:pt-[calc(var(--header-h)+24svh)]">
       <div className="container-x max-w-3xl">
         <Breadcrumbs locale={locale} items={[{ name: UI[locale].footer.privacy, href: href(locale, "privacy") }]} />
         <h1 className="t-h2">{UI[locale].footer.privacy}</h1>

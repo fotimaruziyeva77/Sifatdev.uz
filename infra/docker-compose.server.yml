@@ -52,6 +52,7 @@ services:
     restart: unless-stopped
     mem_limit: 384m
     environment:
+      BACKEND_URL: http://backend:4000
       GOOGLE_SITE_VERIFICATION: ${GOOGLE_SITE_VERIFICATION:-}
       YANDEX_VERIFICATION: ${YANDEX_VERIFICATION:-}
     ports:

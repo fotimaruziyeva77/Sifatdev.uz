@@ -62,7 +62,7 @@ export default function HorizontalScroll({ children }: { children: ReactNode }) 
     };
   }, [enabled]);
 
-  if (!enabled) return <div className="container-x grid gap-6 md:grid-cols-2">{children}</div>;
+  if (!enabled) return <div className="swipe-row flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--gutter)] pb-4 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0">{children}</div>;
 
   return (
     <div ref={outer} style={{ height: h }} className="relative">

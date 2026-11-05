@@ -15,7 +15,8 @@ import Footer, { MobileContactBar } from "@/components/layout/Footer";
 import Consent from "@/components/layout/Consent";
 import SceneLoader from "@/components/three/SceneLoader";
 import SceneDirector from "@/components/three/SceneDirector";
-import { Cursor, FirstVisitLoader, RevealObserver } from "@/components/ui/interactive";
+import { Cursor, RevealObserver } from "@/components/ui/interactive";
+import SiteLoader from "@/components/layout/SiteLoader";
 import { JsonLd } from "@/components/ui/basics";
 
 // Shriftlar build vaqtida yuklab olinib, o'z serverimizdan beriladi (Google'ga so'rov ketmaydi, TZ 9.5).
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
       yandex: process.env.YANDEX_VERIFICATION || undefined,
     },
-    other: { "geo.region": "UZ-TK", "geo.placename": isLocale(locale) ? SITE.address[locale] : "Tashkent" },
+    other: { "geo.region": "UZ-NW", "geo.placename": isLocale(locale) ? SITE.address[locale] : "Navoi" },
   };
 }
 
@@ -70,7 +71,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
                 description: UI[locale].home.lead,
                 email: SITE.email,
                 telephone: SITE.phoneHref,
-                address: { "@type": "PostalAddress", addressLocality: "Tashkent", addressCountry: "UZ" },
+                address: { "@type": "PostalAddress", addressRegion: "Navoi", addressCountry: "UZ" },
                 geo: { "@type": "GeoCoordinates", latitude: SITE.geo.lat, longitude: SITE.geo.lng },
                 areaServed: [{ "@type": "Country", name: "Uzbekistan" }, "Worldwide"],
                 knowsLanguage: ["uz", "ru", "en"],
@@ -83,6 +84,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         />
       </head>
       <body>
+        <SiteLoader />
         <a href="#main" className="skip">{UI[locale].skip}</a>
         <SceneLoader />
         <SceneDirector />
@@ -93,7 +95,6 @@ export default async function LocaleLayout({ children, params }: { children: Rea
         <MobileContactBar locale={locale} />
         <Consent locale={locale} />
         <Cursor />
-        <FirstVisitLoader />
       </body>
     </html>
   );

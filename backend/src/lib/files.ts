@@ -84,3 +84,31 @@ export async function readStored(storedPath: string): Promise<Buffer> {
 export async function deleteStored(storedPath: string): Promise<void> {
   await rm(resolveStored(storedPath), { force: true });
 }
+
+/** Saytda ko'rinadigan rasmlar (admin yuklaydi). SVG yo'q: u ichida skript saqlashi mumkin. */
+export const MEDIA_FILES: FilePolicy = {
+  maxBytes: 5 * 1024 * 1024,
+  allowed: { png: ["image/png"], jpg: ["image/jpeg"], jpeg: ["image/jpeg"], webp: ["image/webp"] },
+};
+
+const MEDIA_DIR = "public-media";
+const MEDIA_NAME = /^[0-9a-f-]{36}\.(png|jpg|webp)$/;
+
+export function resolveMediaName(name: string): string | null {
+  return MEDIA_NAME.test(name) ? `${MEDIA_DIR}/${name}` : null;
+}
+
+export async function storeMedia(buf: Buffer, filename: string): Promise<string> {
+  if (buf.length === 0) throw new FileRejected("empty");
+  if (buf.length > MEDIA_FILES.maxBytes) throw new FileRejected("too_large");
+  const ext = path.extname(cleanFileName(filename)).slice(1).toLowerCase();
+  const allowed = MEDIA_FILES.allowed[ext];
+  if (!allowed) throw new FileRejected("bad_extension");
+  const detected = await fileTypeFromBuffer(buf);
+  if (!detected || !allowed.includes(detected.mime)) throw new FileRejected("bad_content");
+  const dir = path.join(root, MEDIA_DIR);
+  await mkdir(dir, { recursive: true, mode: 0o700 });
+  const name = `${randomUUID()}.${ext === "jpeg" ? "jpg" : ext}`;
+  await writeFile(path.join(dir, name), buf, { mode: 0o600, flag: "wx" });
+  return name;
+}

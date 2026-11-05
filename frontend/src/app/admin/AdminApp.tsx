@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import ContentAdmin from "./ContentAdmin";
 
 type User = { id: string; email: string; name: string; role: string };
 type Lead = {
@@ -28,13 +29,14 @@ export default function AdminApp({ initialLead }: { initialLead?: string }) {
   const [detail, setDetail] = useState<Detail | null>(null);
   const [users, setUsers] = useState<{ id: string; name: string }[]>([]);
   const [err, setErr] = useState("");
+  const [tab, setTab] = useState<"leads" | "content">("leads");
 
   const call = useCallback(
     async (path: string, init: RequestInit = {}) => {
       const res = await fetch(`${API}${path}`, {
         ...init,
         credentials: "same-origin",
-        headers: { ...(init.body ? { "content-type": "application/json" } : {}), ...(init.method && init.method !== "GET" ? { "x-csrf-token": csrf } : {}), ...init.headers },
+        headers: { ...(init.body && !(init.body instanceof FormData) ? { "content-type": "application/json" } : {}), ...(init.method && init.method !== "GET" ? { "x-csrf-token": csrf } : {}), ...init.headers },
       });
       if (res.status === 401) {
         setUser(null);
@@ -149,7 +151,20 @@ export default function AdminApp({ initialLead }: { initialLead?: string }) {
     );
   }
 
+  const canLeads = user.role !== "content";
+  const canContent = user.role !== "sales";
+  const active = !canLeads ? "content" : !canContent ? "leads" : tab;
+
   return (
+    <>
+    <nav className="mx-auto flex max-w-[1400px] flex-wrap items-center gap-2 px-6 pt-6" aria-label="Bo'limlar">
+      {canLeads && <button onClick={() => setTab("leads")} className={`btn btn-sm ${active === "leads" ? "btn-primary" : "btn-secondary"}`}>Kelgan so&apos;rovlar</button>}
+      {canContent && <button onClick={() => setTab("content")} className={`btn btn-sm ${active === "content" ? "btn-primary" : "btn-secondary"}`}>Sayt kontenti</button>}
+      {active === "content" && <button onClick={logout} className="btn btn-ghost btn-sm ml-auto">Chiqish</button>}
+    </nav>
+    {active === "content" ? (
+      <ContentAdmin call={call} role={user.role} />
+    ) : (
     <main className="mx-auto grid max-w-[1400px] gap-6 p-6 lg:grid-cols-[1fr_480px]">
       <section>
         <header className="mb-6 flex flex-wrap items-center justify-between gap-4">
@@ -255,5 +270,7 @@ export default function AdminApp({ initialLead }: { initialLead?: string }) {
         </aside>
       )}
     </main>
+    )}
+    </>
   );
 }

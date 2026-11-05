@@ -219,3 +219,31 @@ html[data-motion="reduced"] .site-header[data-hidden="true"] { transform: none; 
 /* Hover holatlari kursor yo'q qurilmalarda yopishib qolmasin */
 @media (hover: none) { .tilt { transform: none !important; } }
 
+
+/* ===== Loader ===== */
+.site-loader { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; align-content: center; gap: 26px; background: var(--color-base); color: var(--color-fg); overflow: hidden; pointer-events: none; animation: site-loader-out .45s ease 3.2s forwards; transition: opacity .5s ease, transform .6s var(--ease-expo), visibility .5s; }
+html.loader-done .site-loader { opacity: 0; visibility: hidden; transform: scale(1.04); animation: none; }
+html[data-loaded] .site-loader { display: none; }
+@keyframes site-loader-out { to { opacity: 0; visibility: hidden; } }
+.site-loader-logo { position: relative; width: min(62vw, 300px); }
+.site-loader-mark { transform-origin: top; transform-box: fill-box; animation: loader-mark .5s var(--ease-expo) both; }
+@keyframes loader-mark { from { transform: scaleY(0); } }
+.site-loader-logo path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: loader-draw .75s var(--ease-expo) forwards; }
+@keyframes loader-draw { to { stroke-dashoffset: 0; } }
+.site-loader-bar { position: relative; width: min(62vw, 300px); height: 2px; overflow: hidden; border-radius: 2px; background: var(--color-line); }
+.site-loader-bar span { display: block; height: 100%; background: var(--color-accent); transform-origin: left; animation: loader-progress 1.5s cubic-bezier(.3,.7,.2,1) both; }
+@keyframes loader-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.site-loader-dots { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
+.site-loader-dots i { position: absolute; width: 4px; height: 4px; margin: -2px; border-radius: 50%; background: var(--color-fg); opacity: 0; animation: loader-dot 1s var(--ease-expo) both; }
+.site-loader-dots i.is-red { background: var(--color-accent); }
+@keyframes loader-dot { 0% { opacity: 0; transform: translate(var(--x), var(--y)) scale(1.4); } 25% { opacity: 1; } 100% { opacity: 0; transform: translate(0, 0) scale(.3); } }
+
+/* ===== Telefon: jonliroq paydo bo'lish, karusel, bosish javobi ===== */
+.swipe-row { scrollbar-width: none; }
+.swipe-row::-webkit-scrollbar { display: none; }
+@media (max-width: 767px) {
+  .reveal { transform: translateY(34px) scale(.965); transition-duration: .75s; transition-timing-function: var(--ease-expo); }
+  .btn:active, a.card:active { transform: scale(.975); }
+  .hero-in .btn-primary { animation: cta-pulse 2.6s ease-in-out 1.6s infinite; }
+}
+@keyframes cta-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgb(227 38 47 / .45); } 50% { box-shadow: 0 0 0 12px rgb(227 38 47 / 0); } }

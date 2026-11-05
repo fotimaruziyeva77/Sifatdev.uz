@@ -8,7 +8,7 @@ import { pageMeta } from "@/lib/seo";
 import { UI } from "@/content/ui";
 import { SITE } from "@/content/site";
 import { SERVICES } from "@/content/services";
-import { CASES, sortedCases } from "@/content/cases";
+import { getContent } from "@/lib/content-server";
 import { PROCESS, TECH, WHY } from "@/content/company";
 import { SERVICE_ICONS, Words } from "@/components/ui/basics";
 import { Counter, Magnetic } from "@/components/ui/interactive";
@@ -20,9 +20,9 @@ import QuickForm from "@/components/forms/QuickForm";
 type Props = { params: Promise<{ locale: string }> };
 
 const META: Record<Locale, { t: string; d: string }> = {
-  uz: { t: "Sayt, mobil ilova va AI yaratish Toshkentda | SIFATDEV", d: "IT kompaniya SIFATDEV: veb-sayt va portal yaratish, mobil ilova (iOS, Android), AI chatbot va avtomatlashtirish. Davlat va biznes uchun. ☎ +998 99 750 17 17" },
-  ru: { t: "Разработка сайтов, приложений и AI в Ташкенте | SIFATDEV", d: "IT-компания SIFATDEV: создание сайтов и порталов, мобильных приложений, AI-ботов и автоматизация для бизнеса и госсектора. ☎ +998 99 750 17 17" },
-  en: { t: "Web, Mobile App & AI Development in Uzbekistan | SIFATDEV", d: "SIFATDEV is a software company in Tashkent: web platforms, iOS/Android apps, AI agents and dedicated teams for government and business worldwide." },
+  uz: { t: "Sayt, mobil ilova va AI yaratish — Navoiy | SIFATDEV", d: "IT kompaniya SIFATDEV: veb-sayt va portal yaratish, mobil ilova (iOS, Android), AI chatbot va avtomatlashtirish. Davlat va biznes uchun. ☎ +998 99 750 17 17" },
+  ru: { t: "Разработка сайтов, приложений и AI — Навои | SIFATDEV", d: "IT-компания SIFATDEV: создание сайтов и порталов, мобильных приложений, AI-ботов и автоматизация для бизнеса и госсектора. ☎ +998 99 750 17 17" },
+  en: { t: "Web, Mobile App & AI Development in Uzbekistan | SIFATDEV", d: "SIFATDEV is a software company in Navoi, Uzbekistan: web platforms, iOS/Android apps, AI agents and dedicated teams for government and business worldwide." },
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -35,13 +35,14 @@ export default async function Home({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const ui = UI[locale];
-  const featured = sortedCases().slice(0, 6);
+  const { cases, stats } = await getContent();
+  const featured = cases.slice(0, 6);
   const h1Words = ui.home.h1.split(" ");
 
   return (
     <>
       {/* 2. Hero — "Sifat yadrosi" */}
-      <section data-shape="logo" data-x="0.6" data-y="0.02" data-scale="0.58" className="relative flex min-h-[100svh] items-center pb-20 pt-[calc(var(--header-h)+48px)]">
+      <section data-shape="logo" data-x="0.6" data-y="0.02" data-scale="0.58" data-my="0.68" data-mscale="0.36" className="relative flex min-h-[100svh] items-center pb-20 pt-[calc(var(--header-h)+48px)] max-md:items-start max-md:pt-[calc(var(--header-h)+15svh)]">
         <div className="container-x">
           <div className="max-w-[760px]">
             <p className="t-label mb-6">{ui.home.eyebrow}</p>
@@ -79,7 +80,7 @@ export default async function Home({ params }: Props) {
         {SERVICES.map((s, i) => {
           const Icon = SERVICE_ICONS[s.id];
           return (
-            <div key={s.id} data-shape={s.shape} data-x="0.5" data-scale="0.95" className="flex min-h-[70vh] items-center md:min-h-[100vh]">
+            <div key={s.id} data-shape={s.shape} data-x="0.5" data-scale="0.95" data-my="0.44" data-mscale="1" className="flex min-h-[92svh] items-end pb-6 md:min-h-[100vh] md:items-center md:pb-0">
               <div className="container-x">
                 <Link href={href(locale, "services", s.id)} className="card reveal group block max-w-[560px] p-8 md:p-10">
                   <span className="t-label">0{i + 1} / 06</span>
@@ -102,7 +103,7 @@ export default async function Home({ params }: Props) {
       <section aria-label={ui.home.stats} className="section">
         <div className="container-x">
           <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-block)] border border-line bg-line md:grid-cols-4">
-            {SITE.stats.map((s, i) => (
+            {stats.map((s, i) => (
               <div key={i} className="reveal bg-base/90 p-8 backdrop-blur" style={{ ["--i" as string]: i }}>
                 <dt className="sr-only">{s.label[locale]}</dt>
                 <dd>
@@ -125,11 +126,11 @@ export default async function Home({ params }: Props) {
             <h2 id="work-h" className="t-h2 reveal">{ui.home.work}</h2>
             <p className="t-lead reveal mt-4">{ui.home.workLead}</p>
           </div>
-          <Link href={href(locale, "work")} className="btn btn-secondary reveal">{ui.cta.allCases} ({CASES.length})</Link>
+          <Link href={href(locale, "work")} className="btn btn-secondary reveal">{ui.cta.allCases} ({cases.length})</Link>
         </div>
         <HorizontalScroll>
           {featured.map((c, i) => (
-            <div key={c.id} className="w-full lg:w-[min(560px,42vw)] lg:flex-none">
+            <div key={c.id} className="w-full max-md:w-[84vw] max-md:flex-none max-md:snap-center lg:w-[min(560px,42vw)] lg:flex-none">
               <CaseCard c={c} locale={locale} i={i} />
             </div>
           ))}
@@ -137,7 +138,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       {/* 7. Ish jarayoni — partikullar oqimi 3D yo'l bo'ylab */}
-      <section data-shape="helix" data-x="0" data-y="0.05" data-scale="0.85" data-opacity="0.75" data-depth="0.2" aria-labelledby="process-h" className="section">
+      <section data-shape="helix" data-my="0.62" data-x="0" data-y="0.05" data-scale="0.85" data-opacity="0.75" data-depth="0.2" aria-labelledby="process-h" className="section">
         <div className="container-x">
           <p className="t-label reveal mb-4">03 · {ui.home.process}</p>
           <h2 id="process-h" className="t-h2 reveal mb-14">{ui.home.process}</h2>
@@ -154,7 +155,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       {/* 8. Texnologiyalar — globus va 3D sfera */}
-      <section data-shape="globe" data-x="0.55" data-scale="1" aria-labelledby="tech-h" className="section">
+      <section data-shape="globe" data-my="0.5" data-x="0.55" data-scale="1" aria-labelledby="tech-h" className="section">
         <div className="container-x grid items-center gap-12 md:grid-cols-2">
           <div>
             <p className="t-label reveal mb-4">04 · {ui.home.tech}</p>
@@ -201,7 +202,7 @@ export default async function Home({ params }: Props) {
       )}
 
       {/* 12. CTA — partikullar halqa bo'lib yig'iladi */}
-      <section data-shape="ring" data-x="0" data-y="0.3" data-scale="1.15" data-push="1.8" aria-labelledby="cta-h" className="section">
+      <section data-shape="ring" data-my="0.62" data-x="0" data-y="0.3" data-scale="1.15" data-push="1.8" aria-labelledby="cta-h" className="section">
         <div className="container-x">
           <div className="mx-auto max-w-3xl text-center">
             <Words as="h2" text={ui.home.ctaTitle} className="t-h2" />

@@ -40,7 +40,7 @@ attribute vec3 posB;
 attribute float redA;
 attribute float redB;
 attribute vec4 aRand;
-uniform float uTime, uMorph, uPush, uSize, uPR, uScale, uMotion, uIntro, uSpin, uWave, uWarp;
+uniform float uTime, uMorph, uPush, uSize, uPR, uScale, uMotion, uIntro, uSpin, uWave, uWarp, uScrollSpin;
 uniform vec3 uMouse;
 uniform vec3 uWhite, uSilver, uRed;
 varying vec3 vColor;
@@ -61,7 +61,7 @@ void main(){
   p *= 1.0 + (sin(uTime * 0.45) * 0.01) * uMotion;
 
   // Faqat yengil tebranish (to'planib boruvchi aylanish yo'q — logotip doim o'qiladi)
-  float a = sin(uTime * 0.22) * 0.45 * uSpin * uMotion;
+  float a = sin(uTime * 0.22) * 0.45 * uSpin * uMotion + uScrollSpin;
   float b = sin(uTime * 0.17 + 1.3) * 0.14 * uSpin * uMotion;
   p.xz = mat2(cos(a), -sin(a), sin(a), cos(a)) * p.xz;
   p.yz = mat2(cos(b), -sin(b), sin(b), cos(b)) * p.yz;

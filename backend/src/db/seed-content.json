@@ -1,0 +1,1216 @@
+{
+ "cases": [
+  {
+   "id": "sellvia",
+   "order": 1,
+   "clientHidden": false,
+   "client": {
+    "uz": "Sellvia",
+    "ru": "Sellvia",
+    "en": "Sellvia"
+   },
+   "industry": "retail",
+   "services": [
+    "web",
+    "automation"
+   ],
+   "year": 2026,
+   "hue": 210,
+   "device": "laptop",
+   "url": "https://sellvia.uz",
+   "shots": [
+    {
+     "src": "/images/cases/sellvia-desktop.webp",
+     "device": "laptop"
+    },
+    {
+     "src": "/images/cases/sellvia-mobile.webp",
+     "device": "phone"
+    },
+    {
+     "src": "/images/cases/sellvia-2.webp",
+     "device": "laptop"
+    },
+    {
+     "src": "/images/cases/sellvia-3.webp",
+     "device": "laptop"
+    }
+   ],
+   "title": {
+    "uz": "Sellvia — onlayn savdo platformasi",
+    "ru": "Sellvia — платформа онлайн-продаж",
+    "en": "Sellvia — online sales platform"
+   },
+   "summary": {
+    "uz": "10 daqiqada onlayn do'kon: Telegram, veb-sayt va Instagram savdosi bitta paneldan.",
+    "ru": "Интернет-магазин за 10 минут: продажи в Telegram, на сайте и в Instagram из одной панели.",
+    "en": "An online store in 10 minutes: Telegram, web and Instagram sales from one dashboard."
+   },
+   "problem": {
+    "uz": "Tadbirkorlar Telegram, sayt va Instagram'dagi savdoni alohida yuritadi, do'kon, bot, to'lov va analitika uchun esa turli xizmatlarga pul to'laydi.",
+    "ru": "Предприниматели ведут продажи в Telegram, на сайте и в Instagram по отдельности и платят разным сервисам за магазин, бота, оплату и аналитику.",
+    "en": "Sellers run Telegram, web and Instagram sales separately and pay different services for a store, a bot, payments and analytics."
+   },
+   "solution": {
+    "uz": "Texnik bilim talab qilmaydigan platforma: telefon raqam bilan ro'yxatdan o'tiladi, mahsulot yuklanadi va Telegram bot hamda veb-do'kon tayyor bo'ladi. Barcha buyurtmalar bitta panelga tushadi.",
+    "ru": "Платформа без технических знаний: регистрация по номеру телефона, загрузка товаров — и Telegram-бот с веб-магазином готовы. Все заказы попадают в одну панель.",
+    "en": "A no-code platform: sign up with a phone number, upload products, and a Telegram bot and web store are ready. All orders land in one dashboard."
+   },
+   "features": [
+    {
+     "uz": "Telegram WebApp bot — 2 bosishda buyurtma",
+     "ru": "Telegram WebApp-бот — заказ в 2 нажатия",
+     "en": "Telegram WebApp bot — order in 2 taps"
+    },
+    {
+     "uz": "Payme, Click, naqd, kripto, Telegram Stars",
+     "ru": "Payme, Click, наличные, крипто, Telegram Stars",
+     "en": "Payme, Click, cash, crypto, Telegram Stars"
+    },
+    {
+     "uz": "Real vaqtli analitika",
+     "ru": "Аналитика в реальном времени",
+     "en": "Real-time analytics"
+    },
+    {
+     "uz": "Xodimlar rollari va mijozlar bilan chat",
+     "ru": "Роли сотрудников и чат с клиентами",
+     "en": "Staff roles and customer chat"
+    },
+    {
+     "uz": "O'lcham, rang kabi mahsulot variantlari",
+     "ru": "Варианты товара: размер, цвет и др.",
+     "en": "Product variants such as size and color"
+    }
+   ],
+   "results": [
+    {
+     "uz": "Do'kon 10 daqiqada ochiladi, karta talab qilinmaydi",
+     "ru": "Магазин открывается за 10 минут, карта не нужна",
+     "en": "A store opens in 10 minutes, no card required"
+    }
+   ],
+   "tech": []
+  },
+  {
+   "id": "sbozor",
+   "order": 2,
+   "clientHidden": false,
+   "client": {
+    "uz": "SBOZOR",
+    "ru": "SBOZOR",
+    "en": "SBOZOR"
+   },
+   "industry": "retail",
+   "services": [
+    "automation",
+    "web"
+   ],
+   "year": 2026,
+   "hue": 245,
+   "device": "laptop",
+   "url": "https://sbozor.sifatdev.uz",
+   "shots": [
+    {
+     "src": "/images/cases/sbozor-desktop.webp",
+     "device": "laptop"
+    },
+    {
+     "src": "/images/cases/sbozor-mobile.webp",
+     "device": "phone"
+    },
+    {
+     "src": "/images/cases/sbozor-2.webp",
+     "device": "laptop"
+    },
+    {
+     "src": "/images/cases/sbozor-3.webp",
+     "device": "laptop"
+    }
+   ],
+   "title": {
+    "uz": "SBOZOR — bozor patta hisobi",
+    "ru": "SBOZOR — учёт оплат на рынке",
+    "en": "SBOZOR — market stall fee tracking"
+   },
+   "summary": {
+    "uz": "Mavjud kameralar yordamida har kuni qaysi rasta band va qaysi biridan patta tushgani ko'rinadi.",
+    "ru": "Существующие камеры ежедневно показывают, какие торговые места заняты и за какие внесена оплата.",
+    "en": "Existing cameras show every day which stalls are occupied and which have paid their fee."
+   },
+   "problem": {
+    "uz": "Patta qog'oz daftarda yuritiladi, to'lovni isbotlaydigan dalil qolmaydi, nazoratchi esa yuzlab rastani birdan ko'ra olmaydi — daromad sekin-asta kamayadi.",
+    "ru": "Оплаты ведутся в бумажной тетради, доказательств не остаётся, а контролёр не может видеть сотни мест сразу — доход постепенно теряется.",
+    "en": "Fees are logged in paper notebooks, no proof of payment remains, and one inspector cannot watch hundreds of stalls — income quietly leaks."
+   },
+   "solution": {
+    "uz": "Bozorda turgan kameralar belgilangan vaqtlarda rastalarni suratga oladi, tizim band rastalarni ajratadi va kun oxirida har bir qatori surat bilan tasdiqlangan hisobot chiqaradi. Yangi jihoz kerak emas.",
+    "ru": "Камеры на рынке снимают торговые места по расписанию, система определяет занятые, а в конце дня формируется отчёт, где каждая строка подтверждена снимком. Новое оборудование не нужно.",
+    "en": "Existing cameras photograph stalls on schedule, the system detects occupied ones, and an end-of-day report backs every line with a photo. No new hardware needed."
+   },
+   "features": [
+    {
+     "uz": "Bozorning rangli rasta xaritasi",
+     "ru": "Цветная карта торговых мест",
+     "en": "Color-coded stall map"
+    },
+    {
+     "uz": "Direktor, kassir va nazoratchi rollari",
+     "ru": "Роли директора, кассира и контролёра",
+     "en": "Director, cashier and inspector roles"
+    },
+    {
+     "uz": "Kunlik hisobot va Excel fayl",
+     "ru": "Ежедневный отчёт и файл Excel",
+     "en": "Daily report with Excel export"
+    },
+    {
+     "uz": "Kameralar internetga ochilmaydi",
+     "ru": "Камеры не открываются в интернет",
+     "en": "Cameras are never exposed to the internet"
+    },
+    {
+     "uz": "O'zbek va rus tilida",
+     "ru": "На узбекском и русском",
+     "en": "Uzbek and Russian interface"
+    }
+   ],
+   "results": [
+    {
+     "uz": "Har bir hisobot qatori surat bilan tasdiqlanadi — bahsga o'rin qolmaydi",
+     "ru": "Каждая строка отчёта подтверждена снимком — споров не остаётся",
+     "en": "Every report line is backed by a photo, leaving no room for dispute"
+    }
+   ],
+   "tech": []
+  },
+  {
+   "id": "eqhp",
+   "order": 3,
+   "clientHidden": false,
+   "client": {
+    "uz": "EQHP",
+    "ru": "EQHP",
+    "en": "EQHP"
+   },
+   "industry": "construction",
+   "services": [
+    "web",
+    "automation"
+   ],
+   "year": 2026,
+   "hue": 225,
+   "device": "laptop",
+   "url": "https://eqhp-platform.sifatdev.uz/",
+   "shots": [
+    {
+     "src": "/images/cases/eqhp-desktop.webp",
+     "device": "laptop"
+    },
+    {
+     "src": "/images/cases/eqhp-mobile.webp",
+     "device": "phone"
+    }
+   ],
+   "title": {
+    "uz": "EQHP — elektron qurilish hujjatlari",
+    "ru": "EQHP — электронная строительная документация",
+    "en": "EQHP — electronic construction documents"
+   },
+   "summary": {
+    "uz": "Qurilish hujjatlari to'liq elektron: besh bosqichli tasdiq, Face ID va QR imzo.",
+    "ru": "Строительная документация полностью в электронном виде: пять этапов согласования, Face ID и QR-подпись.",
+    "en": "Fully electronic construction paperwork: five-step approval, Face ID and QR signatures."
+   },
+   "problem": {
+    "uz": "Qurilish hujjatlarini tasdiqlash 15 kungacha cho'zilgan, Forma-3 asosida Forma-2 ni tayyorlashda xatolar uchragan.",
+    "ru": "Согласование строительных документов занимало до 15 дней, а при подготовке Формы-2 на основе Формы-3 возникали ошибки.",
+    "en": "Approving construction documents took up to 15 days, and preparing Form-2 from Form-3 was error-prone."
+   },
+   "solution": {
+    "uz": "Platforma Forma-3 dan Forma-2 ni avtomatik shakllantiradi, hujjatlarni besh bosqichda tasdiqlaydi va har bir amalni audit jurnaliga yozadi.",
+    "ru": "Платформа автоматически формирует Форму-2 из Формы-3, проводит документы через пять этапов согласования и записывает каждое действие в журнал аудита.",
+    "en": "The platform generates Form-2 from Form-3 automatically, routes documents through five approval steps, and records every action in an audit log."
+   },
+   "features": [
+    {
+     "uz": "Forma-3 → Forma-2 avtomatik",
+     "ru": "Форма-3 → Форма-2 автоматически",
+     "en": "Form-3 → Form-2 automatically"
+    },
+    {
+     "uz": "Face ID + QR imzo",
+     "ru": "Face ID + QR-подпись",
+     "en": "Face ID + QR signature"
+    },
+    {
+     "uz": "5 bosqichli tasdiq",
+     "ru": "5 этапов согласования",
+     "en": "5-step approval"
+    },
+    {
+     "uz": "Audit jurnali",
+     "ru": "Журнал аудита",
+     "en": "Audit log"
+    }
+   ],
+   "results": [
+    {
+     "uz": "Tasdiqlash muddati 15 kun o'rniga 3–5 kun",
+     "ru": "Согласование за 3–5 дней вместо 15",
+     "en": "Approval in 3–5 days instead of 15"
+    }
+   ],
+   "tech": []
+  },
+  {
+   "id": "qzithb",
+   "order": 4,
+   "clientHidden": false,
+   "client": {
+    "uz": "Quyi Zarafshon irrigatsiya tizimlari havza boshqarmasi",
+    "ru": "Нижне-Зарафшанское бассейновое управление ирригационных систем",
+    "en": "Lower Zarafshan Irrigation Systems Basin Authority"
+   },
+   "industry": "gov",
+   "services": [
+    "web",
+    "gov"
+   ],
+   "year": 2026,
+   "hue": 205,
+   "device": "laptop",
+   "url": "https://qzithb.uz",
+   "shots": [
+    {
+     "src": "/images/cases/qzithb-desktop.webp",
+     "device": "laptop"
+    },
+    {
+     "src": "/images/cases/qzithb-mobile.webp",
+     "device": "phone"
+    }
+   ],
+   "title": {
+    "uz": "Quyi Zarafshon havza boshqarmasi rasmiy sayti",
+    "ru": "Официальный сайт Нижне-Зарафшанского управления",
+    "en": "Lower Zarafshan Basin Authority website"
+   },
+   "summary": {
+    "uz": "Navoiy viloyati irrigatsiya tizimlarini boshqaruvchi davlat tashkilotining rasmiy veb-sayti.",
+    "ru": "Официальный сайт госорганизации, управляющей ирригационными системами Навоийской области.",
+    "en": "The official website of the state body managing irrigation systems in Navoi region."
+   },
+   "problem": {
+    "uz": "Davlat tashkilotiga hujjatlar, yangiliklar va fuqarolar murojaatlari uchun yagona rasmiy kanal kerak edi.",
+    "ru": "Госорганизации нужен был единый официальный канал для документов, новостей и обращений граждан.",
+    "en": "The agency needed a single official channel for documents, news and citizen requests."
+   },
+   "solution": {
+    "uz": "Tashkilot haqida ma'lumot, qonun va qarorlar, ochiq ma'lumotlar, yangiliklar, interaktiv xizmatlar va onlayn murojaat bitta saytda jamlandi.",
+    "ru": "На одном сайте собраны сведения об организации, законы и постановления, открытые данные, новости, интерактивные услуги и онлайн-обращения.",
+    "en": "Organization info, laws and decrees, open data, news, interactive services and online requests are all in one place."
+   },
+   "features": [
+    {
+     "uz": "Onlayn murojaat yuborish",
+     "ru": "Онлайн-обращения",
+     "en": "Online citizen requests"
+    },
+    {
+     "uz": "Interaktiv xizmatlar",
+     "ru": "Интерактивные услуги",
+     "en": "Interactive services"
+    },
+    {
+     "uz": "Hujjatlar va ochiq ma'lumotlar",
+     "ru": "Документы и открытые данные",
+     "en": "Documents and open data"
+    },
+    {
+     "uz": "O'zbek (lotin, kirill) va rus tilida",
+     "ru": "На узбекском (латиница, кириллица) и русском",
+     "en": "Uzbek (Latin, Cyrillic) and Russian"
+    }
+   ],
+   "results": [],
+   "tech": []
+  },
+  {
+   "id": "eco-master",
+   "order": 4.6,
+   "clientHidden": false,
+   "client": {
+    "uz": "Eco-Master",
+    "ru": "Eco-Master",
+    "en": "Eco-Master"
+   },
+   "industry": "services",
+   "services": [
+    "automation",
+    "mobile"
+   ],
+   "year": 2026,
+   "hue": 150,
+   "device": "laptop",
+   "url": "https://eco-master.sifatdev.uz/",
+   "shots": [
+    {
+     "src": "/images/cases/eco-desktop.webp",
+     "device": "laptop"
+    },
+    {
+     "src": "/images/cases/eco-mobile.webp",
+     "device": "phone"
+    }
+   ],
+   "title": {
+    "uz": "Eco-Master — Telegram ilovasi",
+    "ru": "Eco-Master — приложение в Telegram",
+    "en": "Eco-Master — Telegram app"
+   },
+   "summary": {
+    "uz": "Telegram ichida ishlaydigan ilova: alohida o'rnatish talab qilinmaydi.",
+    "ru": "Приложение внутри Telegram: отдельная установка не нужна.",
+    "en": "An app that runs inside Telegram, with nothing extra to install."
+   },
+   "problem": {
+    "uz": "",
+    "ru": "",
+    "en": ""
+   },
+   "solution": {
+    "uz": "Foydalanuvchi ilovani bot yoki havola orqali to'g'ridan-to'g'ri Telegram ichida ochadi.",
+    "ru": "Пользователь открывает приложение прямо в Telegram через бота или ссылку.",
+    "en": "Users open the app directly in Telegram through the bot or a link."
+   },
+   "features": [
+    {
+     "uz": "Telegram ichida ishlaydi",
+     "ru": "Работает внутри Telegram",
+     "en": "Runs inside Telegram"
+    },
+    {
+     "uz": "Alohida o'rnatish kerak emas",
+     "ru": "Не требует установки",
+     "en": "No separate install"
+    }
+   ],
+   "results": [],
+   "tech": []
+  },
+  {
+   "id": "gasnlab",
+   "order": 4.5,
+   "clientHidden": true,
+   "client": {
+    "uz": "Qurilish nazorati",
+    "ru": "Строительный надзор",
+    "en": "Construction oversight"
+   },
+   "industry": "construction",
+   "services": [
+    "gov",
+    "web"
+   ],
+   "year": 2026,
+   "hue": 215,
+   "device": "laptop",
+   "shots": [
+    {
+     "src": "/images/cases/gasn-desktop.webp",
+     "device": "laptop"
+    },
+    {
+     "src": "/images/cases/gasn-mobile.webp",
+     "device": "phone"
+    }
+   ],
+   "title": {
+    "uz": "GASNLAB — inspeksiya va laboratoriya integratsiyasi",
+    "ru": "GASNLAB — интеграция инспекции и лаборатории",
+    "en": "GASNLAB — inspection and laboratory integration"
+   },
+   "summary": {
+    "uz": "Qurilish nazorati inspeksiyasi, laboratoriya va moliyaviy tushumlarni bog'laydigan tizim.",
+    "ru": "Система, объединяющая инспекцию строительного надзора, лабораторию и финансовые поступления.",
+    "en": "A system connecting construction oversight inspection, laboratory work and financial receipts."
+   },
+   "problem": {
+    "uz": "Inspeksiya, laboratoriya va moliyaviy tushumlar ma'lumotlarini yagona tizimda ko'rish zarur edi.",
+    "ru": "Требовалось видеть данные инспекции, лаборатории и финансовых поступлений в единой системе.",
+    "en": "Inspection, laboratory and financial receipt data needed to be visible in one system."
+   },
+   "solution": {
+    "uz": "Nazorat-inspeksiya va laboratoriya jarayonlari moliyaviy tushumlar bilan integratsiya qilingan yagona platforma. Tizimga kirish Telegram orqali amalga oshiriladi.",
+    "ru": "Единая платформа, объединяющая процессы надзора и лаборатории с финансовыми поступлениями. Вход в систему выполняется через Telegram.",
+    "en": "A single platform integrating oversight and laboratory processes with financial receipts. Sign-in is handled through Telegram."
+   },
+   "features": [
+    {
+     "uz": "Nazorat-inspeksiya integratsiyasi",
+     "ru": "Интеграция надзора и инспекции",
+     "en": "Oversight and inspection integration"
+    },
+    {
+     "uz": "Laboratoriya jarayonlari",
+     "ru": "Лабораторные процессы",
+     "en": "Laboratory processes"
+    },
+    {
+     "uz": "Moliyaviy tushumlar hisobi",
+     "ru": "Учёт финансовых поступлений",
+     "en": "Financial receipts tracking"
+    },
+    {
+     "uz": "Telegram orqali kirish",
+     "ru": "Вход через Telegram",
+     "en": "Sign-in with Telegram"
+    }
+   ],
+   "results": [],
+   "tech": []
+  },
+  {
+   "id": "inspection",
+   "order": 5,
+   "clientHidden": true,
+   "client": {
+    "uz": "Davlat tashkiloti",
+    "ru": "Государственная организация",
+    "en": "Government agency"
+   },
+   "industry": "gov",
+   "services": [
+    "gov",
+    "web"
+   ],
+   "year": 2024,
+   "hue": 228,
+   "device": "laptop",
+   "title": {
+    "uz": "Inspeksiya uchun nazorat tizimi",
+    "ru": "Система контроля для инспекции",
+    "en": "Oversight system for an inspection agency"
+   },
+   "duration": {
+    "uz": "6 oy",
+    "ru": "6 месяцев",
+    "en": "6 months"
+   },
+   "team": {
+    "uz": "7 kishi",
+    "ru": "7 человек",
+    "en": "7 people"
+   },
+   "summary": {
+    "uz": "Tekshiruvlar, ijro va hisobotlar yagona elektron tizimda.",
+    "ru": "Проверки, исполнение и отчётность в единой электронной системе.",
+    "en": "Inspections, execution and reporting in one electronic system."
+   },
+   "problem": {
+    "uz": "Tekshiruv natijalari va topshiriqlar turli jadvallarda yuritilgan; rahbariyat umumiy holatni real vaqtda ko'ra olmagan.",
+    "ru": "Результаты проверок и поручения вели в разрозненных таблицах; руководство не видело общую картину в реальном времени.",
+    "en": "Inspection results and assignments lived in scattered spreadsheets; leadership had no real-time picture."
+   },
+   "solution": {
+    "uz": "Rollarga asoslangan veb-platforma: tekshiruv rejalari, inspektor kabinetlari, ijro nazorati va avtomatik hisobotlar.",
+    "ru": "Веб-платформа с ролевой моделью: планы проверок, кабинеты инспекторов, контроль исполнения и автоматические отчёты.",
+    "en": "A role-based web platform: inspection plans, inspector workspaces, execution control and automatic reports."
+   },
+   "features": [
+    {
+     "uz": "Tekshiruvlarni rejalashtirish",
+     "ru": "Планирование проверок",
+     "en": "Inspection planning"
+    },
+    {
+     "uz": "Ijro nazorati va muddatlar",
+     "ru": "Контроль исполнения и сроков",
+     "en": "Execution and deadline tracking"
+    },
+    {
+     "uz": "Hududlar bo'yicha dashboard",
+     "ru": "Дашборд по регионам",
+     "en": "Regional dashboard"
+    },
+    {
+     "uz": "Elektron hujjat aylanishi",
+     "ru": "Электронный документооборот",
+     "en": "Electronic document flow"
+    }
+   ],
+   "results": [
+    {
+     "uz": "Hisobotlar qo'lda emas, avtomatik shakllanadi",
+     "ru": "Отчёты формируются автоматически, а не вручную",
+     "en": "Reports are generated automatically instead of by hand"
+    },
+    {
+     "uz": "Rahbariyat holatni real vaqtda ko'radi",
+     "ru": "Руководство видит ситуацию в реальном времени",
+     "en": "Leadership sees status in real time"
+    }
+   ],
+   "tech": [
+    "Python",
+    "Django",
+    "React",
+    "PostgreSQL",
+    "Docker"
+   ]
+  },
+  {
+   "id": "construction",
+   "order": 6,
+   "clientHidden": true,
+   "client": {
+    "uz": "Davlat tashkiloti",
+    "ru": "Государственная организация",
+    "en": "Government agency"
+   },
+   "industry": "construction",
+   "services": [
+    "gov",
+    "web"
+   ],
+   "year": 2024,
+   "hue": 200,
+   "device": "laptop",
+   "title": {
+    "uz": "Elektron qurilish nazorati platformasi",
+    "ru": "Платформа электронного контроля строительства",
+    "en": "Construction oversight platform"
+   },
+   "duration": {
+    "uz": "5 oy",
+    "ru": "5 месяцев",
+    "en": "5 months"
+   },
+   "team": {
+    "uz": "6 kishi",
+    "ru": "6 человек",
+    "en": "6 people"
+   },
+   "summary": {
+    "uz": "Viloyat miqyosida qurilish obyektlari ustidan shaffof nazorat.",
+    "ru": "Прозрачный контроль строительных объектов в масштабе области.",
+    "en": "Transparent oversight of construction sites across a region."
+   },
+   "problem": {
+    "uz": "Obyektlar holati, murojaatlar va tekshiruvlar haqida ma'lumot markazlashmagan edi.",
+    "ru": "Информация о состоянии объектов, обращениях и проверках не была централизована.",
+    "en": "Data on site status, complaints and inspections was not centralized."
+   },
+   "solution": {
+    "uz": "Xarita asosidagi platforma: obyektlar reyestri, foto-hisobotlar, murojaatlar va nazorat topshiriqlari.",
+    "ru": "Картографическая платформа: реестр объектов, фотоотчёты, обращения и контрольные поручения.",
+    "en": "A map-based platform: site registry, photo reports, complaints and control tasks."
+   },
+   "features": [
+    {
+     "uz": "Obyektlar reyestri xaritada",
+     "ru": "Реестр объектов на карте",
+     "en": "Site registry on a map"
+    },
+    {
+     "uz": "Foto va geolokatsiyali hisobotlar",
+     "ru": "Фотоотчёты с геолокацией",
+     "en": "Geotagged photo reports"
+    },
+    {
+     "uz": "Murojaatlarni kuzatish",
+     "ru": "Отслеживание обращений",
+     "en": "Complaint tracking"
+    }
+   ],
+   "results": [
+    {
+     "uz": "Barcha obyektlar yagona reyestrda",
+     "ru": "Все объекты в едином реестре",
+     "en": "All sites in a single registry"
+    }
+   ],
+   "tech": [
+    "Python",
+    "React",
+    "PostGIS",
+    "Leaflet",
+    "Docker"
+   ]
+  },
+  {
+   "id": "ai-office",
+   "order": 7,
+   "clientHidden": true,
+   "client": {
+    "uz": "Davlat tashkiloti",
+    "ru": "Государственная организация",
+    "en": "Government agency"
+   },
+   "industry": "gov",
+   "services": [
+    "ai",
+    "gov"
+   ],
+   "year": 2025,
+   "hue": 160,
+   "device": "laptop",
+   "title": {
+    "uz": "AI OFIS — AI asosidagi boshqaruv",
+    "ru": "AI OFIS — управление на базе AI",
+    "en": "AI OFIS — AI-assisted management"
+   },
+   "duration": {
+    "uz": "4 oy",
+    "ru": "4 месяца",
+    "en": "4 months"
+   },
+   "team": {
+    "uz": "5 kishi",
+    "ru": "5 человек",
+    "en": "5 people"
+   },
+   "summary": {
+    "uz": "Hujjatlar nazorati, ichki chat va topshiriqlar — AI yordamchi bilan.",
+    "ru": "Контроль документов, внутренний чат и поручения — с AI-помощником.",
+    "en": "Document control, internal chat and tasks — with an AI assistant."
+   },
+   "problem": {
+    "uz": "Kiruvchi hujjatlar ko'p, ularni tahlil qilish va ijrochiga yo'naltirish ko'p vaqt olgan.",
+    "ru": "Входящих документов много, их анализ и распределение занимали много времени.",
+    "en": "High volumes of incoming documents took too long to analyse and route."
+   },
+   "solution": {
+    "uz": "AI hujjat mazmunini qisqartiradi, ijrochi va muddatni taklif qiladi; xodimlar chat va topshiriqlarda ishlaydi.",
+    "ru": "AI кратко пересказывает документ, предлагает исполнителя и срок; сотрудники работают в чате и задачах.",
+    "en": "AI summarizes documents and suggests an assignee and deadline; staff work in chat and tasks."
+   },
+   "features": [
+    {
+     "uz": "Hujjatlarni AI bilan qisqartirish",
+     "ru": "AI-резюме документов",
+     "en": "AI document summaries"
+    },
+    {
+     "uz": "Topshiriqlar va muddatlar",
+     "ru": "Поручения и сроки",
+     "en": "Tasks and deadlines"
+    },
+    {
+     "uz": "Xavfsiz ichki chat",
+     "ru": "Защищённый внутренний чат",
+     "en": "Secure internal chat"
+    }
+   ],
+   "results": [
+    {
+     "uz": "Hujjatni ko'rib chiqish tezlashdi",
+     "ru": "Рассмотрение документов ускорилось",
+     "en": "Faster document review"
+    }
+   ],
+   "tech": [
+    "Python",
+    "LLM",
+    "RAG",
+    "React",
+    "PostgreSQL"
+   ]
+  },
+  {
+   "id": "ai-call-center",
+   "order": 8,
+   "clientHidden": true,
+   "client": {
+    "uz": "Suv yetkazib berish kompaniyasi",
+    "ru": "Компания по доставке воды",
+    "en": "Water delivery company"
+   },
+   "industry": "services",
+   "services": [
+    "ai"
+   ],
+   "year": 2025,
+   "hue": 172,
+   "device": "phone",
+   "title": {
+    "uz": "AI call center",
+    "ru": "AI колл-центр",
+    "en": "AI call center"
+   },
+   "duration": {
+    "uz": "3 oy",
+    "ru": "3 месяца",
+    "en": "3 months"
+   },
+   "team": {
+    "uz": "4 kishi",
+    "ru": "4 человека",
+    "en": "4 people"
+   },
+   "summary": {
+    "uz": "Buyurtmalarni qabul qiladigan ovozli AI operator va analitika.",
+    "ru": "Голосовой AI-оператор, принимающий заказы, и аналитика.",
+    "en": "A voice AI operator that takes orders, plus analytics."
+   },
+   "problem": {
+    "uz": "Tig'iz soatlarda qo'ng'iroqlar javobsiz qolib, buyurtmalar yo'qolgan.",
+    "ru": "В часы пик звонки оставались без ответа, заказы терялись.",
+    "en": "Calls went unanswered at peak hours and orders were lost."
+   },
+   "solution": {
+    "uz": "O'zbek va rus tilida gaplashadigan AI operator buyurtmani qabul qiladi, CRM'ga yozadi va kuryerga yuboradi.",
+    "ru": "AI-оператор на узбекском и русском принимает заказ, записывает в CRM и передаёт курьеру.",
+    "en": "An AI operator speaking Uzbek and Russian takes the order, logs it in the CRM and dispatches a courier."
+   },
+   "features": [
+    {
+     "uz": "Ovozli muloqot (STT/TTS)",
+     "ru": "Голосовой диалог (STT/TTS)",
+     "en": "Voice dialogue (STT/TTS)"
+    },
+    {
+     "uz": "CRM integratsiyasi",
+     "ru": "Интеграция с CRM",
+     "en": "CRM integration"
+    },
+    {
+     "uz": "Qo'ng'iroqlar analitikasi",
+     "ru": "Аналитика звонков",
+     "en": "Call analytics"
+    }
+   ],
+   "results": [
+    {
+     "uz": "Tig'iz soatlarda ham har bir qo'ng'iroqqa javob",
+     "ru": "Ответ на каждый звонок даже в часы пик",
+     "en": "Every call answered, even at peak"
+    }
+   ],
+   "tech": [
+    "Python",
+    "Whisper",
+    "TTS",
+    "LLM",
+    "Asterisk"
+   ]
+  },
+  {
+   "id": "kadrvision",
+   "order": 9,
+   "clientHidden": false,
+   "client": {
+    "uz": "Ichki mahsulot",
+    "ru": "Собственный продукт",
+    "en": "In-house product"
+   },
+   "industry": "hr",
+   "services": [
+    "automation",
+    "web"
+   ],
+   "year": 2025,
+   "hue": 250,
+   "device": "laptop",
+   "title": {
+    "uz": "KadrVision — HR va davomat",
+    "ru": "KadrVision — HR и учёт посещаемости",
+    "en": "KadrVision — HR and attendance"
+   },
+   "duration": {
+    "uz": "Davom etmoqda",
+    "ru": "В развитии",
+    "en": "Ongoing"
+   },
+   "team": {
+    "uz": "5 kishi",
+    "ru": "5 человек",
+    "en": "5 people"
+   },
+   "summary": {
+    "uz": "Turniket va kameralarga ulanadigan HR va davomat platformasi.",
+    "ru": "HR-платформа и учёт посещаемости с подключением к турникетам и камерам.",
+    "en": "An HR and attendance platform connected to turnstiles and cameras."
+   },
+   "problem": {
+    "uz": "Korxonalarda davomat qo'lda yoki tarqoq qurilmalarda hisoblanadi.",
+    "ru": "На предприятиях посещаемость считают вручную или на разрозненных устройствах.",
+    "en": "Companies track attendance by hand or across disconnected devices."
+   },
+   "solution": {
+    "uz": "Qurilmalardan ma'lumot yig'ib, ish vaqti, kechikishlar va hisobotlarni avtomatik hisoblaydi.",
+    "ru": "Собирает данные с устройств и автоматически считает рабочее время, опоздания и отчёты.",
+    "en": "Collects device data and automatically computes hours, lateness and reports."
+   },
+   "features": [
+    {
+     "uz": "Qurilmalar integratsiyasi",
+     "ru": "Интеграция устройств",
+     "en": "Device integration"
+    },
+    {
+     "uz": "Smenalar va jadval",
+     "ru": "Смены и графики",
+     "en": "Shifts and schedules"
+    },
+    {
+     "uz": "Telegram bildirishnomalar",
+     "ru": "Уведомления в Telegram",
+     "en": "Telegram notifications"
+    }
+   ],
+   "results": [
+    {
+     "uz": "Davomat hisobi to'liq avtomatlashtirilgan",
+     "ru": "Учёт посещаемости полностью автоматизирован",
+     "en": "Fully automated attendance tracking"
+    }
+   ],
+   "tech": [
+    "Go",
+    "React",
+    "PostgreSQL",
+    "ONVIF",
+    "Telegram Bot API"
+   ]
+  },
+  {
+   "id": "legal-ai",
+   "order": 10,
+   "clientHidden": true,
+   "client": {
+    "uz": "Yuridik firma",
+    "ru": "Юридическая фирма",
+    "en": "Law firm"
+   },
+   "industry": "legal",
+   "services": [
+    "ai"
+   ],
+   "year": 2025,
+   "hue": 190,
+   "device": "laptop",
+   "title": {
+    "uz": "Huquqshunos AI agent",
+    "ru": "Юридический AI-агент",
+    "en": "Legal AI agent"
+   },
+   "duration": {
+    "uz": "2 oy",
+    "ru": "2 месяца",
+    "en": "2 months"
+   },
+   "team": {
+    "uz": "3 kishi",
+    "ru": "3 человека",
+    "en": "3 people"
+   },
+   "summary": {
+    "uz": "Lex.uz asosida javob beradigan va manbaga havola qiladigan AI yordamchi.",
+    "ru": "AI-помощник, отвечающий на основе Lex.uz со ссылками на источники.",
+    "en": "An AI assistant that answers from Lex.uz and cites its sources."
+   },
+   "problem": {
+    "uz": "Huquqshunoslar me'yoriy hujjatlarni qidirishga ko'p vaqt sarflagan.",
+    "ru": "Юристы тратили много времени на поиск нормативных актов.",
+    "en": "Lawyers spent too much time searching legislation."
+   },
+   "solution": {
+    "uz": "RAG asosidagi agent tegishli moddalarni topadi, qisqa javob beradi va manbani ko'rsatadi.",
+    "ru": "Агент на RAG находит нужные статьи, кратко отвечает и указывает источник.",
+    "en": "A RAG agent finds relevant articles, answers concisely and cites the source."
+   },
+   "features": [
+    {
+     "uz": "Manbaga havola bilan javob",
+     "ru": "Ответ со ссылкой на источник",
+     "en": "Answers with citations"
+    },
+    {
+     "uz": "Uch tilda so'rov",
+     "ru": "Запросы на трёх языках",
+     "en": "Queries in three languages"
+    }
+   ],
+   "results": [
+    {
+     "uz": "Huquqiy ma'lumot qidirish tezlashdi",
+     "ru": "Поиск правовой информации ускорился",
+     "en": "Faster legal research"
+    }
+   ],
+   "tech": [
+    "Python",
+    "LLM",
+    "RAG",
+    "Vector DB",
+    "FastAPI"
+   ]
+  },
+  {
+   "id": "greenhouse",
+   "order": 11,
+   "clientHidden": true,
+   "client": {
+    "uz": "Agro kompaniya",
+    "ru": "Агрокомпания",
+    "en": "Agri company"
+   },
+   "industry": "agro",
+   "services": [
+    "automation",
+    "mobile"
+   ],
+   "year": 2024,
+   "hue": 150,
+   "device": "phone",
+   "title": {
+    "uz": "Issiqxona boshqaruv platformasi",
+    "ru": "Платформа управления теплицей",
+    "en": "Greenhouse management platform"
+   },
+   "duration": {
+    "uz": "3 oy",
+    "ru": "3 месяца",
+    "en": "3 months"
+   },
+   "team": {
+    "uz": "4 kishi",
+    "ru": "4 человека",
+    "en": "4 people"
+   },
+   "summary": {
+    "uz": "Harorat, namlik va sug'orishni masofadan kuzatish va boshqarish.",
+    "ru": "Удалённый мониторинг и управление температурой, влажностью и поливом.",
+    "en": "Remote monitoring and control of temperature, humidity and irrigation."
+   },
+   "problem": {
+    "uz": "Issiqxona sharoitlari qo'lda tekshirilgan, kechikish hosilga zarar bergan.",
+    "ru": "Условия в теплице проверяли вручную, задержки вредили урожаю.",
+    "en": "Conditions were checked by hand and delays hurt yields."
+   },
+   "solution": {
+    "uz": "Datchiklardan real vaqt ma'lumoti, ogohlantirishlar va mobil ilovadan boshqaruv.",
+    "ru": "Данные с датчиков в реальном времени, оповещения и управление из мобильного приложения.",
+    "en": "Real-time sensor data, alerts and control from a mobile app."
+   },
+   "features": [
+    {
+     "uz": "Datchiklar monitoringi",
+     "ru": "Мониторинг датчиков",
+     "en": "Sensor monitoring"
+    },
+    {
+     "uz": "Avtomatik sug'orish qoidalari",
+     "ru": "Правила автоматического полива",
+     "en": "Automatic irrigation rules"
+    },
+    {
+     "uz": "Ogohlantirishlar",
+     "ru": "Оповещения",
+     "en": "Alerts"
+    }
+   ],
+   "results": [
+    {
+     "uz": "Sharoitlar 24/7 nazorat ostida",
+     "ru": "Условия под контролем 24/7",
+     "en": "Conditions monitored 24/7"
+    }
+   ],
+   "tech": [
+    "Flutter",
+    "Python",
+    "MQTT",
+    "TimescaleDB"
+   ]
+  }
+ ],
+ "vacancies": [
+  {
+   "id": "frontend-react",
+   "open": true,
+   "direction": "frontend",
+   "type": "hybrid",
+   "posted": "2026-11-01",
+   "level": {
+    "uz": "Middle",
+    "ru": "Middle",
+    "en": "Middle"
+   },
+   "title": {
+    "uz": "Frontend dasturchi (React)",
+    "ru": "Frontend-разработчик (React)",
+    "en": "Frontend Developer (React)"
+   },
+   "intro": {
+    "uz": "Davlat va biznes uchun murakkab interfeyslar yaratadigan jamoaga qo'shiling.",
+    "ru": "Присоединяйтесь к команде, создающей сложные интерфейсы для госсектора и бизнеса.",
+    "en": "Join the team building complex interfaces for government and business."
+   },
+   "tasks": [
+    {
+     "uz": "React/Next.js'da interfeyslar yaratish",
+     "ru": "Разработка интерфейсов на React/Next.js",
+     "en": "Build interfaces with React/Next.js"
+    },
+    {
+     "uz": "Dizaynerlar va backend bilan ishlash",
+     "ru": "Работа с дизайнерами и backend",
+     "en": "Work with designers and backend engineers"
+    },
+    {
+     "uz": "Kod-review va testlar",
+     "ru": "Код-ревью и тесты",
+     "en": "Code reviews and tests"
+    }
+   ],
+   "requirements": [
+    {
+     "uz": "React va TypeScript bo'yicha 2+ yil",
+     "ru": "2+ года React и TypeScript",
+     "en": "2+ years with React and TypeScript"
+    },
+    {
+     "uz": "REST/GraphQL bilan ishlash",
+     "ru": "Опыт с REST/GraphQL",
+     "en": "REST/GraphQL experience"
+    },
+    {
+     "uz": "Git, kod sifati madaniyati",
+     "ru": "Git и культура качества кода",
+     "en": "Git and a code-quality mindset"
+    }
+   ],
+   "conditions": [
+    {
+     "uz": "Raqobatbardosh maosh",
+     "ru": "Конкурентная зарплата",
+     "en": "Competitive salary"
+    },
+    {
+     "uz": "Gibrid format",
+     "ru": "Гибридный формат",
+     "en": "Hybrid work"
+    },
+    {
+     "uz": "O'qish byudjeti",
+     "ru": "Бюджет на обучение",
+     "en": "Learning budget"
+    }
+   ]
+  },
+  {
+   "id": "python-backend",
+   "open": true,
+   "direction": "backend",
+   "type": "office",
+   "posted": "2026-10-20",
+   "level": {
+    "uz": "Middle / Senior",
+    "ru": "Middle / Senior",
+    "en": "Middle / Senior"
+   },
+   "title": {
+    "uz": "Python backend dasturchi",
+    "ru": "Python backend-разработчик",
+    "en": "Python Backend Developer"
+   },
+   "intro": {
+    "uz": "Yuqori yuklamali tizimlar va AI xizmatlari backend'ini quramiz.",
+    "ru": "Строим backend нагруженных систем и AI-сервисов.",
+    "en": "We build backends for high-load systems and AI services."
+   },
+   "tasks": [
+    {
+     "uz": "Django/FastAPI'da API va xizmatlar",
+     "ru": "API и сервисы на Django/FastAPI",
+     "en": "APIs and services with Django/FastAPI"
+    },
+    {
+     "uz": "PostgreSQL so'rovlarini optimallashtirish",
+     "ru": "Оптимизация запросов PostgreSQL",
+     "en": "PostgreSQL query optimization"
+    },
+    {
+     "uz": "Integratsiyalar va navbatlar",
+     "ru": "Интеграции и очереди",
+     "en": "Integrations and queues"
+    }
+   ],
+   "requirements": [
+    {
+     "uz": "Python bo'yicha 3+ yil",
+     "ru": "3+ года Python",
+     "en": "3+ years of Python"
+    },
+    {
+     "uz": "PostgreSQL, Docker",
+     "ru": "PostgreSQL, Docker",
+     "en": "PostgreSQL, Docker"
+    },
+    {
+     "uz": "Xavfsiz kod yozish tamoyillari",
+     "ru": "Принципы безопасной разработки",
+     "en": "Secure coding practices"
+    }
+   ],
+   "conditions": [
+    {
+     "uz": "Raqobatbardosh maosh",
+     "ru": "Конкурентная зарплата",
+     "en": "Competitive salary"
+    },
+    {
+     "uz": "Navoiy viloyatidagi ofis",
+     "ru": "Офис в Навоийской области",
+     "en": "Office in Navoi Region"
+    },
+    {
+     "uz": "Tibbiy sug'urta",
+     "ru": "Медицинская страховка",
+     "en": "Health insurance"
+    }
+   ]
+  }
+ ],
+ "stats": [
+  {
+   "value": 40,
+   "suffix": "+",
+   "label": {
+    "uz": "amalga oshirilgan loyiha",
+    "ru": "реализованных проектов",
+    "en": "projects delivered"
+   }
+  },
+  {
+   "value": 25,
+   "suffix": "+",
+   "label": {
+    "uz": "mijoz va hamkor",
+    "ru": "клиентов и партнёров",
+    "en": "clients and partners"
+   }
+  },
+  {
+   "value": 5,
+   "suffix": "+",
+   "label": {
+    "uz": "yillik tajriba",
+    "ru": "лет опыта",
+    "en": "years of experience"
+   }
+  },
+  {
+   "value": 30,
+   "suffix": "",
+   "label": {
+    "uz": "jamoa a'zosi",
+    "ru": "человек в команде",
+    "en": "team members"
+   }
+  }
+ ]
+}

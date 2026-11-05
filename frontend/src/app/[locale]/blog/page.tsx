@@ -24,7 +24,7 @@ export default async function BlogPage({ params }: Props) {
   const ui = UI[locale];
   return (
     <>
-    <section data-shape="code" data-x="0.6" data-scale="0.6" className="min-h-[70svh] pb-24 pt-[calc(var(--header-h)+48px)]">
+    <section data-shape="code" data-x="0.6" data-scale="0.6" className="min-h-[70svh] pb-24 pt-[calc(var(--header-h)+48px)] max-md:pt-[calc(var(--header-h)+24svh)]">
       <div className="container-x">
         <Breadcrumbs locale={locale} items={[{ name: ui.blog.title, href: href(locale, "blog") }]} />
         <h1 className="t-display">{ui.blog.title}</h1>

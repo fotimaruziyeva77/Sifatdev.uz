@@ -5,6 +5,7 @@ import { href } from "@/lib/routes";
 import { pageMeta } from "@/lib/seo";
 import { UI } from "@/content/ui";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import { getContent } from "@/lib/content-server";
 import PortfolioGrid from "@/components/sections/PortfolioGrid";
 import NextSteps from "@/components/sections/NextSteps";
 import { Words } from "@/components/ui/basics";
@@ -28,6 +29,7 @@ export default async function WorkPage({ params, searchParams }: Props) {
     initial[k] = typeof v === "string" ? v.slice(0, 300) : undefined;
   }
   const ui = UI[locale];
+  const { cases } = await getContent();
   return (
     <>
       <section data-shape="sphere" data-x="0.5" data-scale="0.6" data-opacity="0" data-depth="0.4" className="pb-12 pt-[calc(var(--header-h)+48px)]">
@@ -38,7 +40,7 @@ export default async function WorkPage({ params, searchParams }: Props) {
         </div>
       </section>
       <section className="section !pt-4">
-        <PortfolioGrid locale={locale} initial={initial} />
+        <PortfolioGrid locale={locale} initial={initial} cases={cases} />
       </section>
       <NextSteps locale={locale} from="work" />
     </>

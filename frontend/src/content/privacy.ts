@@ -11,7 +11,7 @@ export const PRIVACY: Record<Locale, { updated: string; sections: { h: string; p
       { h: "Uchinchi tomonlar", p: ["So'rov xabari SIFATDEV xodimlarining ichki Telegram guruhiga va korporativ pochtasiga yuboriladi.", "Analitika (Google Analytics, Yandex Metrika) faqat roziligingiz bo'lsa yoki qonunchilik ruxsat bergan hollarda yoqiladi."] },
       { h: "Huquqlaringiz", p: ["Ma'lumotlaringiz bilan tanishish, ularni tuzatish yoki o'chirishni talab qilish, roziligingizni qaytarib olish huquqiga egasiz. So'rovni info@sifatdev.uz manziliga yuboring — 30 kun ichida bajariladi."] },
       { h: "Cookie'lar", p: ["Zarur cookie'lar: til tanlovi, cookie roziligi, animatsiya sozlamasi.", "Analitik cookie'lar: faqat rozilikdan keyin (Yevropa Ittifoqi foydalanuvchilari uchun majburiy)."] },
-      { h: "Aloqa", p: ["SIFATDEV, Toshkent sh. Email: info@sifatdev.uz"] },
+      { h: "Aloqa", p: ["SIFATDEV, Navoiy viloyati. Email: info@sifatdev.uz"] },
     ],
   },
   ru: {
@@ -23,7 +23,7 @@ export const PRIVACY: Record<Locale, { updated: string; sections: { h: string; p
       { h: "Третьи лица", p: ["Уведомление о заявке отправляется во внутреннюю Telegram-группу и корпоративную почту сотрудников SIFATDEV.", "Аналитика (Google Analytics, Яндекс Метрика) включается только с вашего согласия или когда это допускает законодательство."] },
       { h: "Ваши права", p: ["Вы вправе запросить доступ к данным, их исправление или удаление, а также отозвать согласие. Напишите на info@sifatdev.uz — запрос будет исполнен в течение 30 дней."] },
       { h: "Cookie", p: ["Необходимые cookie: выбор языка, согласие на cookie, настройка анимаций.", "Аналитические cookie — только после согласия (обязательно для пользователей из ЕС)."] },
-      { h: "Контакты", p: ["SIFATDEV, г. Ташкент. Email: info@sifatdev.uz"] },
+      { h: "Контакты", p: ["SIFATDEV, Навоийская область. Email: info@sifatdev.uz"] },
     ],
   },
   en: {
@@ -35,7 +35,7 @@ export const PRIVACY: Record<Locale, { updated: string; sections: { h: string; p
       { h: "Third parties", p: ["Request notifications are sent to SIFATDEV's internal Telegram group and corporate email.", "Analytics (Google Analytics, Yandex Metrica) is enabled only with your consent or where the law permits."] },
       { h: "Your rights (including GDPR)", p: ["You may request access to, correction or deletion of your data, and withdraw consent at any time. Email info@sifatdev.uz — we respond within 30 days."] },
       { h: "Cookies", p: ["Essential cookies: language preference, cookie consent and animation setting.", "Analytics cookies: only after consent (required for visitors from the EU)."] },
-      { h: "Contact", p: ["SIFATDEV, Tashkent, Uzbekistan. Email: info@sifatdev.uz"] },
+      { h: "Contact", p: ["SIFATDEV, Navoi Region, Uzbekistan. Email: info@sifatdev.uz"] },
     ],
   },
 };
