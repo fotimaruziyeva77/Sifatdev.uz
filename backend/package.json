@@ -37,6 +37,6 @@
     "@types/pg": "^8.15.4",
     "@types/qrcode-terminal": "^0.12.2",
     "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
+    "typescript": "^7.0.2"
   }
 }
