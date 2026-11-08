@@ -86,10 +86,11 @@ void main(){
   // Kursor: itarish + girdob
   vec2 d = world.xy - uMouse.xy;
   float dist2 = dot(d, d);
-  float f = exp(-dist2 * 2.6) * uPush;
+  // Ta'sir kichik va yumshoq: shakl o'qiladigan bo'lib qoladi
+  float f = exp(-dist2 * 16.0) * uPush;
   vec2 nd = normalize(d + 1e-4);
-  world.xy += nd * f * 0.5 + vec2(-nd.y, nd.x) * f * 0.35;
-  world.z += f * 0.4;
+  world.xy += nd * f * 0.12 + vec2(-nd.y, nd.x) * f * 0.06;
+  world.z += f * 0.08;
 
   vec4 mv = viewMatrix * world;
   gl_Position = projectionMatrix * mv;

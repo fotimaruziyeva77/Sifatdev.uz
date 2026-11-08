@@ -177,7 +177,7 @@ function Core({ count, reduced, scaleCount, light }: { count: number; reduced: b
     const mouseOn = scene.mouse.active && !reduced;
     // Telefonda barmoq tegmagan paytda ham zarrachalar o'zi girdob hosil qiladi
     const auto = mobile && !mouseOn && !reduced;
-    u.uPush!.value = damp(u.uPush!.value, mouseOn ? scene.push : auto ? 0.16 * (1 - 0.7 * Math.min(flat, 1)) : 0, 5, dt);
+    u.uPush!.value = damp(u.uPush!.value, mouseOn ? scene.push : auto ? 0.6 * (1 - 0.7 * Math.min(flat, 1)) : 0, 5, dt);
     if (mouseOn) (u.uMouse!.value as THREE.Vector3).set(scene.mouse.x * half.w, scene.mouse.y * half.h, 0);
     else if (auto && pts.current) {
       const t = u.uTime!.value as number;
